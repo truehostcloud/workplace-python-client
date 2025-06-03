@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.refresh_token_api import RefreshTokenApi
+from workplace_console_client.api.refresh_token_api import RefreshTokenApi
 
 
 class TestRefreshTokenApi(unittest.TestCase):

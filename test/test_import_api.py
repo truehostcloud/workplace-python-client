@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.import_api import ImportApi
+from workplace_console_client.api.import_api import ImportApi
 
 
 class TestImportApi(unittest.TestCase):

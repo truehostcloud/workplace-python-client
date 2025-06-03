@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.domain_api import DomainApi
+from workplace_console_client.api.domain_api import DomainApi
 
 
 class TestDomainApi(unittest.TestCase):

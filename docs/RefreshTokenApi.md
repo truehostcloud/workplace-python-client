@@ -1,4 +1,4 @@
-# openapi_client.RefreshTokenApi
+# workplace_console_client.RefreshTokenApi
 
 All URIs are relative to *http://127.0.0.1:8000/api*
 
@@ -18,14 +18,14 @@ token if the refresh token is valid.
 * Basic Authentication (Basic):
 
 ```python
-import openapi_client
-from openapi_client.models.token_refresh import TokenRefresh
-from openapi_client.rest import ApiException
+import workplace_console_client
+from workplace_console_client.models.token_refresh import TokenRefresh
+from workplace_console_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://127.0.0.1:8000/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     host = "http://127.0.0.1:8000/api"
 )
 
@@ -35,16 +35,16 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with workplace_console_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.RefreshTokenApi(api_client)
-    data = openapi_client.TokenRefresh() # TokenRefresh | 
+    api_instance = workplace_console_client.RefreshTokenApi(api_client)
+    data = workplace_console_client.TokenRefresh() # TokenRefresh | 
 
     try:
         api_response = api_instance.refresh_token_create(data)

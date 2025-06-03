@@ -19,9 +19,9 @@ from typing_extensions import Annotated
 
 from pydantic import StrictStr
 
-from openapi_client.api_client import ApiClient, RequestSerialized
-from openapi_client.api_response import ApiResponse
-from openapi_client.rest import RESTResponseType
+from workplace_console_client.api_client import ApiClient, RequestSerialized
+from workplace_console_client.api_response import ApiResponse
+from workplace_console_client.rest import RESTResponseType
 
 
 class SubscriptionsApi:

@@ -15,10 +15,10 @@
 
 import unittest
 
-from workplace_console_client.models.token_obtain_pair import TokenObtainPair
+from workplace_console_client.models.dns_info_create200_response import DnsInfoCreate200Response
 
-class TestTokenObtainPair(unittest.TestCase):
-    """TokenObtainPair unit test stubs"""
+class TestDnsInfoCreate200Response(unittest.TestCase):
+    """DnsInfoCreate200Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,28 +26,26 @@ class TestTokenObtainPair(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> TokenObtainPair:
-        """Test TokenObtainPair
+    def make_instance(self, include_optional) -> DnsInfoCreate200Response:
+        """Test DnsInfoCreate200Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `TokenObtainPair`
+        # uncomment below to create an instance of `DnsInfoCreate200Response`
         """
-        model = TokenObtainPair()
+        model = DnsInfoCreate200Response()
         if include_optional:
-            return TokenObtainPair(
-                username = '0',
-                password = '0'
+            return DnsInfoCreate200Response(
+                score = 56,
+                message = ''
             )
         else:
-            return TokenObtainPair(
-                username = '0',
-                password = '0',
+            return DnsInfoCreate200Response(
         )
         """
 
-    def testTokenObtainPair(self):
-        """Test TokenObtainPair"""
+    def testDnsInfoCreate200Response(self):
+        """Test DnsInfoCreate200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

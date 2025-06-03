@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.delete_alias_api import DeleteAliasApi
+from workplace_console_client.api.delete_alias_api import DeleteAliasApi
 
 
 class TestDeleteAliasApi(unittest.TestCase):

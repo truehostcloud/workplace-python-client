@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.dns_info_api import DnsInfoApi
+from workplace_console_client.api.dns_info_api import DnsInfoApi
 
 
 class TestDnsInfoApi(unittest.TestCase):

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.get_token_api import GetTokenApi
+from workplace_console_client.api.get_token_api import GetTokenApi
 
 
 class TestGetTokenApi(unittest.TestCase):

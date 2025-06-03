@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "openapi_client"
+name = "workplace_console_client"
 version = "1.0.0"
 description = "Open Xchange Console"
 authors = ["OpenAPI Generator Community <support@truehost.cloud>"]
@@ -7,7 +7,7 @@ license = "BSD License"
 readme = "README.md"
 repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Open Xchange Console"]
-include = ["openapi_client/py.typed"]
+include = ["workplace_console_client/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -35,7 +35,7 @@ extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
 files = [
-  "openapi_client",
+  "workplace_console_client",
   #"test",  # auto-generated tests
   "tests", # hand-written tests
 ]
@@ -73,7 +73,7 @@ disallow_any_generics = true
 
 [[tool.mypy.overrides]]
 module = [
-  "openapi_client.configuration",
+  "workplace_console_client.configuration",
 ]
 warn_unused_ignores = true
 strict_equality = true

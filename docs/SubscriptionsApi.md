@@ -1,4 +1,4 @@
-# openapi_client.SubscriptionsApi
+# workplace_console_client.SubscriptionsApi
 
 All URIs are relative to *http://127.0.0.1:8000/api*
 
@@ -18,13 +18,13 @@ Method | HTTP request | Description
 * Basic Authentication (Basic):
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import workplace_console_client
+from workplace_console_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://127.0.0.1:8000/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     host = "http://127.0.0.1:8000/api"
 )
 
@@ -34,15 +34,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with workplace_console_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SubscriptionsApi(api_client)
+    api_instance = workplace_console_client.SubscriptionsApi(api_client)
 
     try:
         api_instance.subscriptions_create()
@@ -85,13 +85,13 @@ void (empty response body)
 * Basic Authentication (Basic):
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import workplace_console_client
+from workplace_console_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://127.0.0.1:8000/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     host = "http://127.0.0.1:8000/api"
 )
 
@@ -101,15 +101,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with workplace_console_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SubscriptionsApi(api_client)
+    api_instance = workplace_console_client.SubscriptionsApi(api_client)
     context_id = 'context_id_example' # str | 
 
     try:
@@ -156,13 +156,13 @@ void (empty response body)
 * Basic Authentication (Basic):
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import workplace_console_client
+from workplace_console_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://127.0.0.1:8000/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     host = "http://127.0.0.1:8000/api"
 )
 
@@ -172,15 +172,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with workplace_console_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SubscriptionsApi(api_client)
+    api_instance = workplace_console_client.SubscriptionsApi(api_client)
 
     try:
         api_instance.subscriptions_list()
@@ -223,13 +223,13 @@ void (empty response body)
 * Basic Authentication (Basic):
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import workplace_console_client
+from workplace_console_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://127.0.0.1:8000/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     host = "http://127.0.0.1:8000/api"
 )
 
@@ -239,15 +239,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = openapi_client.Configuration(
+configuration = workplace_console_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with workplace_console_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SubscriptionsApi(api_client)
+    api_instance = workplace_console_client.SubscriptionsApi(api_client)
     context_id = 'context_id_example' # str | 
 
     try:

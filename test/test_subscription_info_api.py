@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.subscription_info_api import SubscriptionInfoApi
+from workplace_console_client.api.subscription_info_api import SubscriptionInfoApi
 
 
 class TestSubscriptionInfoApi(unittest.TestCase):

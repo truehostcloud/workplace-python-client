@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.domain_info_api import DomainInfoApi
+from workplace_console_client.api.domain_info_api import DomainInfoApi
 
 
 class TestDomainInfoApi(unittest.TestCase):

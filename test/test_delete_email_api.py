@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.delete_email_api import DeleteEmailApi
+from workplace_console_client.api.delete_email_api import DeleteEmailApi
 
 
 class TestDeleteEmailApi(unittest.TestCase):

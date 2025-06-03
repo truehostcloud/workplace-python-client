@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.upgrade_api import UpgradeApi
+from workplace_console_client.api.upgrade_api import UpgradeApi
 
 
 class TestUpgradeApi(unittest.TestCase):

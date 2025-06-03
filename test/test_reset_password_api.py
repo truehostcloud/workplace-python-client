@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.reset_password_api import ResetPasswordApi
+from workplace_console_client.api.reset_password_api import ResetPasswordApi
 
 
 class TestResetPasswordApi(unittest.TestCase):

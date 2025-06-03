@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.create_alias_api import CreateAliasApi
+from workplace_console_client.api.create_alias_api import CreateAliasApi
 
 
 class TestCreateAliasApi(unittest.TestCase):

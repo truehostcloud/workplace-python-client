@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.token_obtain_pair import TokenObtainPair
+from workplace_console_client.models.token_obtain_pair import TokenObtainPair
 
 # TODO update the JSON string below
 json = "{}"

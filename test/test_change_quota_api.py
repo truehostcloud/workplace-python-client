@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.change_quota_api import ChangeQuotaApi
+from workplace_console_client.api.change_quota_api import ChangeQuotaApi
 
 
 class TestChangeQuotaApi(unittest.TestCase):

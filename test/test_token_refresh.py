@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.token_refresh import TokenRefresh
+from workplace_console_client.models.token_refresh import TokenRefresh
 
 class TestTokenRefresh(unittest.TestCase):
     """TokenRefresh unit test stubs"""

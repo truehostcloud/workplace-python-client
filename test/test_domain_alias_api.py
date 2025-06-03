@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.domain_alias_api import DomainAliasApi
+from workplace_console_client.api.domain_alias_api import DomainAliasApi
 
 
 class TestDomainAliasApi(unittest.TestCase):

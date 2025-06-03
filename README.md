@@ -1,8 +1,6 @@
-# workplace-console-client
-workplace-console-client
-=========================
+# Workplace Console Client
 
-This is the pip package for using the workplace console API from other applications.
+This is the Truehost's pip package for using the workplace console API from other python applications.
 
 - API version: v1
 - Package version: 1.0.1

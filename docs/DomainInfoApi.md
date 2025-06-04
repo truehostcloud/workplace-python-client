@@ -4,11 +4,15 @@ All URIs are relative to *http://127.0.0.1:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**domain_info_create**](DomainInfoApi.md#domain_info_create) | **POST** /domain-info/ | 
+[**domain_info_create**](DomainInfoApi.md#domain_info_create) | **POST** /domain-info/ | Get domain subscription details.
 
 
 # **domain_info_create**
-> domain_info_create()
+> SubscriptionInfoResponse domain_info_create(data)
+
+Get domain subscription details.
+
+Get domain subscription details and emails list.
 
 ### Example
 
@@ -16,6 +20,8 @@ Method | HTTP request | Description
 
 ```python
 import workplace_console_client
+from workplace_console_client.models.sub_scription_info import SubScriptionInfo
+from workplace_console_client.models.subscription_info_response import SubscriptionInfoResponse
 from workplace_console_client.rest import ApiException
 from pprint import pprint
 
@@ -40,9 +46,13 @@ configuration = workplace_console_client.Configuration(
 with workplace_console_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_console_client.DomainInfoApi(api_client)
+    data = workplace_console_client.SubScriptionInfo() # SubScriptionInfo | 
 
     try:
-        api_instance.domain_info_create()
+        # Get domain subscription details.
+        api_response = api_instance.domain_info_create(data)
+        print("The response of DomainInfoApi->domain_info_create:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling DomainInfoApi->domain_info_create: %s\n" % e)
 ```
@@ -51,11 +61,14 @@ with workplace_console_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**SubScriptionInfo**](SubScriptionInfo.md)|  | 
 
 ### Return type
 
-void (empty response body)
+[**SubscriptionInfoResponse**](SubscriptionInfoResponse.md)
 
 ### Authorization
 
@@ -63,14 +76,14 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** |  |  -  |
+**200** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

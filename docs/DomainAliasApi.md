@@ -4,11 +4,15 @@ All URIs are relative to *http://127.0.0.1:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**domain_alias_create**](DomainAliasApi.md#domain_alias_create) | **POST** /domain-alias/ | 
+[**domain_alias_create**](DomainAliasApi.md#domain_alias_create) | **POST** /domain-alias/ | Get domain alias list.
 
 
 # **domain_alias_create**
-> domain_alias_create()
+> List[AliasDisplay] domain_alias_create(data)
+
+Get domain alias list.
+
+Get domain alias list.
 
 ### Example
 
@@ -16,6 +20,8 @@ Method | HTTP request | Description
 
 ```python
 import workplace_console_client
+from workplace_console_client.models.alias_display import AliasDisplay
+from workplace_console_client.models.domain import Domain
 from workplace_console_client.rest import ApiException
 from pprint import pprint
 
@@ -40,9 +46,13 @@ configuration = workplace_console_client.Configuration(
 with workplace_console_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_console_client.DomainAliasApi(api_client)
+    data = workplace_console_client.Domain() # Domain | 
 
     try:
-        api_instance.domain_alias_create()
+        # Get domain alias list.
+        api_response = api_instance.domain_alias_create(data)
+        print("The response of DomainAliasApi->domain_alias_create:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling DomainAliasApi->domain_alias_create: %s\n" % e)
 ```
@@ -51,11 +61,14 @@ with workplace_console_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**Domain**](Domain.md)|  | 
 
 ### Return type
 
-void (empty response body)
+[**List[AliasDisplay]**](AliasDisplay.md)
 
 ### Authorization
 
@@ -63,14 +76,14 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** |  |  -  |
+**200** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

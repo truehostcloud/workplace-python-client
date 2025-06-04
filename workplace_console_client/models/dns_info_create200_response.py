@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,9 +27,17 @@ class DnsInfoCreate200Response(BaseModel):
     """
     DnsInfoCreate200Response
     """ # noqa: E501
-    score: Optional[StrictInt] = None
+    score: Union[StrictFloat, StrictInt]
     message: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["score", "message"]
+    domain: Optional[StrictStr] = None
+    all_dns_score: Optional[Union[StrictFloat, StrictInt]] = None
+    found: Optional[Union[StrictFloat, StrictInt]] = None
+    total: Optional[Union[StrictFloat, StrictInt]] = None
+    missing_dns: Optional[List[Dict[str, Any]]] = None
+    other_missing_dns: Optional[List[Dict[str, Any]]] = None
+    found_dns: Optional[Dict[str, Any]] = None
+    error: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["score", "message", "domain", "all_dns_score", "found", "total", "missing_dns", "other_missing_dns", "found_dns", "error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +91,15 @@ class DnsInfoCreate200Response(BaseModel):
 
         _obj = cls.model_validate({
             "score": obj.get("score"),
-            "message": obj.get("message")
+            "message": obj.get("message"),
+            "domain": obj.get("domain"),
+            "all_dns_score": obj.get("all_dns_score"),
+            "found": obj.get("found"),
+            "total": obj.get("total"),
+            "missing_dns": obj.get("missing_dns"),
+            "other_missing_dns": obj.get("other_missing_dns"),
+            "found_dns": obj.get("found_dns"),
+            "error": obj.get("error")
         })
         return _obj
 

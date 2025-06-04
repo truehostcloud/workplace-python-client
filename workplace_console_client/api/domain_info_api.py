@@ -17,6 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from workplace_console_client.models.sub_scription_info import SubScriptionInfo
+from workplace_console_client.models.subscription_info_response import SubscriptionInfoResponse
 
 from workplace_console_client.api_client import ApiClient, RequestSerialized
 from workplace_console_client.api_response import ApiResponse
@@ -39,6 +41,7 @@ class DomainInfoApi:
     @validate_call
     def domain_info_create(
         self,
+        data: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -51,10 +54,13 @@ class DomainInfoApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """domain_info_create
+    ) -> SubscriptionInfoResponse:
+        """Get domain subscription details.
 
+        Get domain subscription details and emails list.
 
+        :param data: (required)
+        :type data: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -78,6 +84,7 @@ class DomainInfoApi:
         """ # noqa: E501
 
         _param = self._domain_info_create_serialize(
+            data=data,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -85,7 +92,7 @@ class DomainInfoApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '200': "SubscriptionInfoResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -101,6 +108,7 @@ class DomainInfoApi:
     @validate_call
     def domain_info_create_with_http_info(
         self,
+        data: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -113,10 +121,13 @@ class DomainInfoApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """domain_info_create
+    ) -> ApiResponse[SubscriptionInfoResponse]:
+        """Get domain subscription details.
 
+        Get domain subscription details and emails list.
 
+        :param data: (required)
+        :type data: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -140,6 +151,7 @@ class DomainInfoApi:
         """ # noqa: E501
 
         _param = self._domain_info_create_serialize(
+            data=data,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -147,7 +159,7 @@ class DomainInfoApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '200': "SubscriptionInfoResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -163,6 +175,7 @@ class DomainInfoApi:
     @validate_call
     def domain_info_create_without_preload_content(
         self,
+        data: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -176,9 +189,12 @@ class DomainInfoApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """domain_info_create
+        """Get domain subscription details.
 
+        Get domain subscription details and emails list.
 
+        :param data: (required)
+        :type data: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -202,6 +218,7 @@ class DomainInfoApi:
         """ # noqa: E501
 
         _param = self._domain_info_create_serialize(
+            data=data,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -209,7 +226,7 @@ class DomainInfoApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '200': "SubscriptionInfoResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -220,6 +237,7 @@ class DomainInfoApi:
 
     def _domain_info_create_serialize(
         self,
+        data,
         _request_auth,
         _content_type,
         _headers,
@@ -245,9 +263,31 @@ class DomainInfoApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if data is not None:
+            _body_params = data
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [

@@ -22,7 +22,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "workplace-console-client"
-VERSION = "1.0.1"
+VERSION = "2.0.0"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
     "urllib3 >= 2.1.0, < 3.0.0",
@@ -35,23 +35,14 @@ setup(
     name=NAME,
     version=VERSION,
     description="Open Xchange Console",
-    author="Truehost Cloud",
+    author="OpenAPI Generator community",
     author_email="support@truehost.cloud",
-    url="https://truehost.cloud",
+    url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Open Xchange Console"],
-    license="Proprietary",
-    classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'Intended Audience :: Developers',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'Programming Language :: Python :: 3.11',
-    ],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
+    license="BSD License",
     long_description_content_type='text/markdown',
     long_description="""\
     Test description

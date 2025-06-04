@@ -5,8 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**score** | **int** |  | [optional] 
+**score** | **float** |  | 
 **message** | **str** |  | [optional] 
+**domain** | **str** |  | [optional] 
+**all_dns_score** | **float** |  | [optional] 
+**found** | **float** |  | [optional] 
+**total** | **float** |  | [optional] 
+**missing_dns** | **List[object]** |  | [optional] 
+**other_missing_dns** | **List[object]** |  | [optional] 
+**found_dns** | **object** |  | [optional] 
+**error** | **List[str]** |  | [optional] 
 
 ## Example
 

@@ -4,11 +4,15 @@ All URIs are relative to *http://127.0.0.1:8000/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**change_quota_create**](ChangeQuotaApi.md#change_quota_create) | **POST** /change-quota/ | 
+[**change_quota_create**](ChangeQuotaApi.md#change_quota_create) | **POST** /change-quota/ | Change email quota.
 
 
 # **change_quota_create**
-> change_quota_create()
+> ChangeQuotaCreate200Response change_quota_create(data)
+
+Change email quota.
+
+Change email quota.
 
 ### Example
 
@@ -16,6 +20,8 @@ Method | HTTP request | Description
 
 ```python
 import workplace_console_client
+from workplace_console_client.models.change_email_quota import ChangeEmailQuota
+from workplace_console_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
 from workplace_console_client.rest import ApiException
 from pprint import pprint
 
@@ -40,9 +46,13 @@ configuration = workplace_console_client.Configuration(
 with workplace_console_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_console_client.ChangeQuotaApi(api_client)
+    data = workplace_console_client.ChangeEmailQuota() # ChangeEmailQuota | 
 
     try:
-        api_instance.change_quota_create()
+        # Change email quota.
+        api_response = api_instance.change_quota_create(data)
+        print("The response of ChangeQuotaApi->change_quota_create:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ChangeQuotaApi->change_quota_create: %s\n" % e)
 ```
@@ -51,11 +61,14 @@ with workplace_console_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**ChangeEmailQuota**](ChangeEmailQuota.md)|  | 
 
 ### Return type
 
-void (empty response body)
+[**ChangeQuotaCreate200Response**](ChangeQuotaCreate200Response.md)
 
 ### Authorization
 
@@ -63,14 +76,14 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** |  |  -  |
+**200** | Success |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -1,6 +1,6 @@
 # workplace_console_client.SubscriptionsApi
 
-All URIs are relative to *http://127.0.0.1:8000/api*
+All URIs are relative to *http://127.0.0.1:8001/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,10 +28,10 @@ from workplace_console_client.models.open_exchange_create_account import OpenExc
 from workplace_console_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://127.0.0.1:8000/api
+# Defining the host is optional and defaults to http://127.0.0.1:8001/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = workplace_console_client.Configuration(
-    host = "http://127.0.0.1:8000/api"
+    host = "http://127.0.0.1:8001/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -102,10 +102,10 @@ import workplace_console_client
 from workplace_console_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://127.0.0.1:8000/api
+# Defining the host is optional and defaults to http://127.0.0.1:8001/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = workplace_console_client.Configuration(
-    host = "http://127.0.0.1:8000/api"
+    host = "http://127.0.0.1:8001/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -174,10 +174,10 @@ from workplace_console_client.models.subscriptions_read200_response import Subsc
 from workplace_console_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://127.0.0.1:8000/api
+# Defining the host is optional and defaults to http://127.0.0.1:8001/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = workplace_console_client.Configuration(
-    host = "http://127.0.0.1:8000/api"
+    host = "http://127.0.0.1:8001/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -254,10 +254,10 @@ from workplace_console_client.models.service_action import ServiceAction
 from workplace_console_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://127.0.0.1:8000/api
+# Defining the host is optional and defaults to http://127.0.0.1:8001/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = workplace_console_client.Configuration(
-    host = "http://127.0.0.1:8000/api"
+    host = "http://127.0.0.1:8001/api"
 )
 
 # The client must configure the authentication and authorization parameters

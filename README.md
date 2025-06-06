@@ -18,9 +18,9 @@ Python 3.9+
 If the Python package is hosted on a repository, you can install it directly using:
 
 ```sh
-pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+pip install git+https://github.com/truehostcloud/workplace-console-client.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/truehostcloud/workplace-console-client.git`)
 
 Then import the package:
 ```python

@@ -18,6 +18,7 @@
 __version__ = "1.0.0"
 
 # import apis into sdk package
+from workplace_console_client.api.available_subscriptions_api import AvailableSubscriptionsApi
 from workplace_console_client.api.change_quota_api import ChangeQuotaApi
 from workplace_console_client.api.create_alias_api import CreateAliasApi
 from workplace_console_client.api.delete_alias_api import DeleteAliasApi
@@ -63,6 +64,7 @@ from workplace_console_client.models.order_display import OrderDisplay
 from workplace_console_client.models.password_reset import PasswordReset
 from workplace_console_client.models.service_action import ServiceAction
 from workplace_console_client.models.sub_scription_info import SubScriptionInfo
+from workplace_console_client.models.subscription_details import SubscriptionDetails
 from workplace_console_client.models.subscription_info_create200_response import SubscriptionInfoCreate200Response
 from workplace_console_client.models.subscription_info_response import SubscriptionInfoResponse
 from workplace_console_client.models.subscriptions_read200_response import SubscriptionsRead200Response

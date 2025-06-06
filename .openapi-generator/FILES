@@ -4,6 +4,7 @@
 .travis.yml
 README.md
 docs/AliasDisplay.md
+docs/AvailableSubscriptionsApi.md
 docs/ChangeEmailQuota.md
 docs/ChangeQuotaApi.md
 docs/ChangeQuotaCreate200Response.md
@@ -32,6 +33,7 @@ docs/RefreshTokenApi.md
 docs/ResetPasswordApi.md
 docs/ServiceAction.md
 docs/SubScriptionInfo.md
+docs/SubscriptionDetails.md
 docs/SubscriptionInfoApi.md
 docs/SubscriptionInfoCreate200Response.md
 docs/SubscriptionInfoResponse.md
@@ -47,9 +49,12 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_available_subscriptions_api.py
+test/test_subscription_details.py
 tox.ini
 workplace_console_client/__init__.py
 workplace_console_client/api/__init__.py
+workplace_console_client/api/available_subscriptions_api.py
 workplace_console_client/api/change_quota_api.py
 workplace_console_client/api/create_alias_api.py
 workplace_console_client/api/delete_alias_api.py
@@ -87,6 +92,7 @@ workplace_console_client/models/order_display.py
 workplace_console_client/models/password_reset.py
 workplace_console_client/models/service_action.py
 workplace_console_client/models/sub_scription_info.py
+workplace_console_client/models/subscription_details.py
 workplace_console_client/models/subscription_info_create200_response.py
 workplace_console_client/models/subscription_info_response.py
 workplace_console_client/models/subscriptions_read200_response.py

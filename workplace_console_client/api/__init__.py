@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from workplace_console_client.api.available_subscriptions_api import AvailableSubscriptionsApi
 from workplace_console_client.api.change_quota_api import ChangeQuotaApi
 from workplace_console_client.api.create_alias_api import CreateAliasApi
 from workplace_console_client.api.delete_alias_api import DeleteAliasApi

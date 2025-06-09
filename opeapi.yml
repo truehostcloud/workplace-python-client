@@ -1,14 +1,14 @@
 swagger: '2.0'
 info:
-  title: Open Xchange Console
-  description: Test description
+  title: Workplace Console API
+  description: API for managing email and workplace service subscriptions.
   termsOfService: https://www.google.com/policies/terms/
   contact:
     email: support@truehost.cloud
   license:
     name: BSD License
   version: v1
-host: 127.0.0.1:8000
+host: https://your-workplace-console.com/
 schemes:
 - http
 basePath: /api

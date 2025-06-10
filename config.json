@@ -1,6 +1,6 @@
 {
-    "packageName": "workplace_console_client",
-    "projectName": "workplace-console-client",
+    "packageName": "workplace_client",
+    "projectName": "truehost-workplace-api-client",
     "packageVersion": "1.0.8",
     "packageUrl": "https://github.com/truehostcloud/workplace-python-client",
     "packageCompany": "Truehost",

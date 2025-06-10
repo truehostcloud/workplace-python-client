@@ -18,13 +18,13 @@ Python 3.9+
 If the Python package is hosted on a repository, you can install it directly using:
 
 ```sh
-pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+pip install git+https://github.com/truehostcloud/workplace-python-client.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/truehostcloud/workplace-python-client.git`)
 
 Then import the package:
 ```python
-import workplace_console_client
+import workplace_client
 ```
 
 ### Setuptools
@@ -38,7 +38,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import workplace_console_client
+import workplace_client
 ```
 
 ### Tests
@@ -51,13 +51,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 
-import workplace_console_client
-from workplace_console_client.rest import ApiException
+import workplace_client
+from workplace_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://127.0.0.1:8001/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = workplace_console_client.Configuration(
+configuration = workplace_client.Configuration(
     host = "http://127.0.0.1:8001/api"
 )
 
@@ -67,17 +67,17 @@ configuration = workplace_console_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = workplace_console_client.Configuration(
+configuration = workplace_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 
 # Enter a context with an instance of the API client
-with workplace_console_client.ApiClient(configuration) as api_client:
+with workplace_client.api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workplace_console_client.ChangeQuotaApi(api_client)
-    data = workplace_console_client.ChangeEmailQuota() # ChangeEmailQuota | 
+    api_instance = workplace_client.api_change_quota_api.ChangeQuotaApi(api_client)
+    data = workplace_client.models.change_email_quota.ChangeEmailQuota() # ChangeEmailQuota | 
 
     try:
         # Change email quota.

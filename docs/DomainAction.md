@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.domain_action import DomainAction
+from workplace_client.models.domain_action import DomainAction
 
 # TODO update the JSON string below
 json = "{}"

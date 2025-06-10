@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Truehost Workpace API
+    Workplace Console API
 
-    Truehost Workpace API
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud

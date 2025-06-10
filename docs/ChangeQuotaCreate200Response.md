@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
+from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
 
 # TODO update the JSON string below
 json = "{}"

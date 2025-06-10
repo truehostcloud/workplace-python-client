@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.alias_display import AliasDisplay
+from workplace_client.models.alias_display import AliasDisplay
 
 # TODO update the JSON string below
 json = "{}"

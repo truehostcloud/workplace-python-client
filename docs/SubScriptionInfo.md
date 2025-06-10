@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.sub_scription_info import SubScriptionInfo
+from workplace_client.models.sub_scription_info import SubScriptionInfo
 
 # TODO update the JSON string below
 json = "{}"

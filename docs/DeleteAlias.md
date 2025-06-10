@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.delete_alias import DeleteAlias
+from workplace_client.models.delete_alias import DeleteAlias
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Open Xchange Console
+    Workplace Console API
 
-    Test description
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -21,8 +21,8 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "workplace-console-client"
-VERSION = "2.0.1"
+NAME = "truehost-workplace-api-client"
+VERSION = "1.0.8"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
     "urllib3 >= 2.1.0, < 3.0.0",
@@ -34,18 +34,18 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Open Xchange Console",
+    description="Workplace Console API",
     author="OpenAPI Generator community",
     author_email="support@truehost.cloud",
-    url="",
-    keywords=["OpenAPI", "OpenAPI-Generator", "Open Xchange Console"],
+    url="https://github.com/truehostcloud/workplace-python-client",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Workplace Console API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     license="BSD License",
     long_description_content_type='text/markdown',
     long_description="""\
-    Test description
+    API for managing email and workplace service subscriptions.
     """,  # noqa: E501
-    package_data={"workplace_console_client": ["py.typed"]},
+    package_data={"workplace_client": ["py.typed"]},
 )

@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Truehost Workpace API
+    Workplace Console API
 
-    Truehost Workpace API
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -207,7 +207,7 @@ conf = workplace_client.Configuration(
     ) -> None:
         """Constructor
         """
-        self._base_path = "http://127.0.0.1:8001/api" if host is None else host
+        self._base_path = "http://https://your-workplace-console.com//api" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -527,7 +527,7 @@ conf = workplace_client.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v1\n"\
-               "SDK Package Version: 1.0.0".\
+               "SDK Package Version: 1.0.8".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:
@@ -537,7 +537,7 @@ conf = workplace_client.Configuration(
         """
         return [
             {
-                'url': "http://127.0.0.1:8001/api",
+                'url': "http://https://your-workplace-console.com//api",
                 'description': "No description provided",
             }
         ]

@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Truehost Workpace API
+    Workplace Console API
 
-    Truehost Workpace API
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -91,7 +91,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/1.0.0/python'
+        self.user_agent = 'OpenAPI-Generator/1.0.8/python'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):

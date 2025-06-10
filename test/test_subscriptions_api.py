@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Open Xchange Console
+    Workplace Console API
 
-    Test description
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -15,7 +15,7 @@
 
 import unittest
 
-from workplace_console_client.api.subscriptions_api import SubscriptionsApi
+from workplace_client.api.subscriptions_api import SubscriptionsApi
 
 
 class TestSubscriptionsApi(unittest.TestCase):
@@ -30,12 +30,7 @@ class TestSubscriptionsApi(unittest.TestCase):
     def test_subscriptions_create(self) -> None:
         """Test case for subscriptions_create
 
-        """
-        pass
-
-    def test_subscriptions_create_0(self) -> None:
-        """Test case for subscriptions_create_0
-
+        Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
         """
         pass
 
@@ -48,6 +43,14 @@ class TestSubscriptionsApi(unittest.TestCase):
     def test_subscriptions_read(self) -> None:
         """Test case for subscriptions_read
 
+        Get subscription details
+        """
+        pass
+
+    def test_update_subscription_status(self) -> None:
+        """Test case for update_subscription_status
+
+        Update subscription status, delete, suspend, unsuspend, etc...
         """
         pass
 

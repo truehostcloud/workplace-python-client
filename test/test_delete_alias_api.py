@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Open Xchange Console
+    Workplace Console API
 
-    Test description
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -15,7 +15,7 @@
 
 import unittest
 
-from workplace_console_client.api.delete_alias_api import DeleteAliasApi
+from workplace_client.api.delete_alias_api import DeleteAliasApi
 
 
 class TestDeleteAliasApi(unittest.TestCase):
@@ -30,6 +30,7 @@ class TestDeleteAliasApi(unittest.TestCase):
     def test_delete_alias_create(self) -> None:
         """Test case for delete_alias_create
 
+        Delete alias.
         """
         pass
 

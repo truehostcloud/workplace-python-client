@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Open Xchange Console
+    Workplace Console API
 
-    Test description
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -15,7 +15,7 @@
 
 import unittest
 
-from workplace_console_client.api.domain_info_api import DomainInfoApi
+from workplace_client.api.domain_info_api import DomainInfoApi
 
 
 class TestDomainInfoApi(unittest.TestCase):
@@ -30,6 +30,7 @@ class TestDomainInfoApi(unittest.TestCase):
     def test_domain_info_create(self) -> None:
         """Test case for domain_info_create
 
+        Get domain subscription details.
         """
         pass
 

@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Open Xchange Console
+    Workplace Console API
 
-    Test description
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -15,7 +15,7 @@
 
 import unittest
 
-from workplace_console_client.api.dns_info_api import DnsInfoApi
+from workplace_client.api.dns_info_api import DnsInfoApi
 
 
 class TestDnsInfoApi(unittest.TestCase):

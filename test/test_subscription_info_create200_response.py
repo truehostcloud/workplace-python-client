@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Open Xchange Console
+    Workplace Console API
 
-    Test description
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -15,7 +15,7 @@
 
 import unittest
 
-from workplace_console_client.models.subscription_info_create200_response import SubscriptionInfoCreate200Response
+from workplace_client.models.subscription_info_create200_response import SubscriptionInfoCreate200Response
 
 class TestSubscriptionInfoCreate200Response(unittest.TestCase):
     """SubscriptionInfoCreate200Response unit test stubs"""

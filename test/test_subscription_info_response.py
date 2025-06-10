@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Open Xchange Console
+    Workplace Console API
 
-    Test description
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -15,7 +15,7 @@
 
 import unittest
 
-from workplace_console_client.models.subscription_info_response import SubscriptionInfoResponse
+from workplace_client.models.subscription_info_response import SubscriptionInfoResponse
 
 class TestSubscriptionInfoResponse(unittest.TestCase):
     """SubscriptionInfoResponse unit test stubs"""
@@ -36,11 +36,12 @@ class TestSubscriptionInfoResponse(unittest.TestCase):
         model = SubscriptionInfoResponse()
         if include_optional:
             return SubscriptionInfoResponse(
-                info = workplace_console_client.models.order_display.OrderDisplay(
+                info = workplace_client.models.order_display.OrderDisplay(
                     id = 56, 
                     context_id = -2147483648, 
                     domain = '0', 
                     enabled = True, 
+                    synched_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     average_size = -2147483648, 
                     filestore_id = -2147483648, 
                     filestore_name = '', 
@@ -61,7 +62,7 @@ class TestSubscriptionInfoResponse(unittest.TestCase):
                     is_verified = True, 
                     subscription = 56, ),
                 emails = [
-                    workplace_console_client.models.email_display.EmailDisplay(
+                    workplace_client.models.email_display.EmailDisplay(
                         id = 56, 
                         name = '0', 
                         email_quota = -2147483648, 
@@ -74,11 +75,12 @@ class TestSubscriptionInfoResponse(unittest.TestCase):
             )
         else:
             return SubscriptionInfoResponse(
-                info = workplace_console_client.models.order_display.OrderDisplay(
+                info = workplace_client.models.order_display.OrderDisplay(
                     id = 56, 
                     context_id = -2147483648, 
                     domain = '0', 
                     enabled = True, 
+                    synched_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     average_size = -2147483648, 
                     filestore_id = -2147483648, 
                     filestore_name = '', 
@@ -99,7 +101,7 @@ class TestSubscriptionInfoResponse(unittest.TestCase):
                     is_verified = True, 
                     subscription = 56, ),
                 emails = [
-                    workplace_console_client.models.email_display.EmailDisplay(
+                    workplace_client.models.email_display.EmailDisplay(
                         id = 56, 
                         name = '0', 
                         email_quota = -2147483648, 

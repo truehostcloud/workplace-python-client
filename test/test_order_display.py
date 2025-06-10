@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Open Xchange Console
+    Workplace Console API
 
-    Test description
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -15,7 +15,7 @@
 
 import unittest
 
-from workplace_console_client.models.order_display import OrderDisplay
+from workplace_client.models.order_display import OrderDisplay
 
 class TestOrderDisplay(unittest.TestCase):
     """OrderDisplay unit test stubs"""
@@ -40,6 +40,7 @@ class TestOrderDisplay(unittest.TestCase):
                 context_id = -2147483648,
                 domain = '0',
                 enabled = True,
+                synched_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 average_size = -2147483648,
                 filestore_id = -2147483648,
                 filestore_name = '',

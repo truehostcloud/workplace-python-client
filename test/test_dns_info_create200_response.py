@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Open Xchange Console
+    Workplace Console API
 
-    Test description
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -15,7 +15,7 @@
 
 import unittest
 
-from workplace_console_client.models.dns_info_create200_response import DnsInfoCreate200Response
+from workplace_client.models.dns_info_create200_response import DnsInfoCreate200Response
 
 class TestDnsInfoCreate200Response(unittest.TestCase):
     """DnsInfoCreate200Response unit test stubs"""
@@ -36,11 +36,26 @@ class TestDnsInfoCreate200Response(unittest.TestCase):
         model = DnsInfoCreate200Response()
         if include_optional:
             return DnsInfoCreate200Response(
-                score = 56,
-                message = ''
+                score = 1.337,
+                message = '',
+                domain = '',
+                all_dns_score = 1.337,
+                found = 1.337,
+                total = 1.337,
+                missing_dns = [
+                    None
+                    ],
+                other_missing_dns = [
+                    None
+                    ],
+                found_dns = None,
+                error = [
+                    ''
+                    ]
             )
         else:
             return DnsInfoCreate200Response(
+                score = 1.337,
         )
         """
 

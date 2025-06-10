@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.subscriptions_read200_response import SubscriptionsRead200Response
+from workplace_client.models.subscriptions_read200_response import SubscriptionsRead200Response
 
 # TODO update the JSON string below
 json = "{}"

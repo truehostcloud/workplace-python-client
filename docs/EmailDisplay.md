@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.email_display import EmailDisplay
+from workplace_client.models.email_display import EmailDisplay
 
 # TODO update the JSON string below
 json = "{}"

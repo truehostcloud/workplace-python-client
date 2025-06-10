@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.dns_info_create_request import DnsInfoCreateRequest
+from workplace_client.models.dns_info_create_request import DnsInfoCreateRequest
 
 # TODO update the JSON string below
 json = "{}"

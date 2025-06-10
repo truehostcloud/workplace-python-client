@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.password_reset import PasswordReset
+from workplace_client.models.password_reset import PasswordReset
 
 # TODO update the JSON string below
 json = "{}"

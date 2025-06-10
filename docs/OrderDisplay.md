@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **context_id** | **int** |  | [optional] 
 **domain** | **str** |  | 
 **enabled** | **bool** |  | [optional] 
+**synched_at** | **datetime** |  | [optional] 
 **average_size** | **int** |  | [optional] 
 **filestore_id** | **int** |  | [optional] 
 **filestore_name** | **str** |  | [optional] 
@@ -32,7 +33,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.order_display import OrderDisplay
+from workplace_client.models.order_display import OrderDisplay
 
 # TODO update the JSON string below
 json = "{}"

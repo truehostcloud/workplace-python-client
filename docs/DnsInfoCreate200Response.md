@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.dns_info_create200_response import DnsInfoCreate200Response
+from workplace_client.models.dns_info_create200_response import DnsInfoCreate200Response
 
 # TODO update the JSON string below
 json = "{}"

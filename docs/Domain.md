@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.domain import Domain
+from workplace_client.models.domain import Domain
 
 # TODO update the JSON string below
 json = "{}"

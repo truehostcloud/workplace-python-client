@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.service_action import ServiceAction
+from workplace_client.models.service_action import ServiceAction
 
 # TODO update the JSON string below
 json = "{}"

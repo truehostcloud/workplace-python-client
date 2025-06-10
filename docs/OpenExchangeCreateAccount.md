@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from workplace_console_client.models.open_exchange_create_account import OpenExchangeCreateAccount
+from workplace_client.models.open_exchange_create_account import OpenExchangeCreateAccount
 
 # TODO update the JSON string below
 json = "{}"

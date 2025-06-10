@@ -1,6 +1,6 @@
-# workplace_console_client.SubscriptionsApi
+# workplace_client.SubscriptionsApi
 
-All URIs are relative to *http://127.0.0.1:8001/api*
+All URIs are relative to *http://https://your-workplace-console.com//api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,16 +22,16 @@ Create a new email subscription
 * Basic Authentication (Basic):
 
 ```python
-import workplace_console_client
-from workplace_console_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
-from workplace_console_client.models.open_exchange_create_account import OpenExchangeCreateAccount
-from workplace_console_client.rest import ApiException
+import workplace_client
+from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
+from workplace_client.models.open_exchange_create_account import OpenExchangeCreateAccount
+from workplace_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://127.0.0.1:8001/api
+# Defining the host is optional and defaults to http://https://your-workplace-console.com//api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = workplace_console_client.Configuration(
-    host = "http://127.0.0.1:8001/api"
+configuration = workplace_client.Configuration(
+    host = "http://https://your-workplace-console.com//api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -40,16 +40,16 @@ configuration = workplace_console_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = workplace_console_client.Configuration(
+configuration = workplace_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with workplace_console_client.ApiClient(configuration) as api_client:
+with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workplace_console_client.SubscriptionsApi(api_client)
-    data = workplace_console_client.OpenExchangeCreateAccount() # OpenExchangeCreateAccount | 
+    api_instance = workplace_client.SubscriptionsApi(api_client)
+    data = workplace_client.OpenExchangeCreateAccount() # OpenExchangeCreateAccount | 
 
     try:
         # Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
@@ -98,14 +98,14 @@ Name | Type | Description  | Notes
 * Basic Authentication (Basic):
 
 ```python
-import workplace_console_client
-from workplace_console_client.rest import ApiException
+import workplace_client
+from workplace_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://127.0.0.1:8001/api
+# Defining the host is optional and defaults to http://https://your-workplace-console.com//api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = workplace_console_client.Configuration(
-    host = "http://127.0.0.1:8001/api"
+configuration = workplace_client.Configuration(
+    host = "http://https://your-workplace-console.com//api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -114,15 +114,15 @@ configuration = workplace_console_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = workplace_console_client.Configuration(
+configuration = workplace_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with workplace_console_client.ApiClient(configuration) as api_client:
+with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workplace_console_client.SubscriptionsApi(api_client)
+    api_instance = workplace_client.SubscriptionsApi(api_client)
 
     try:
         api_instance.subscriptions_list()
@@ -169,15 +169,15 @@ Get subscription details
 * Basic Authentication (Basic):
 
 ```python
-import workplace_console_client
-from workplace_console_client.models.subscriptions_read200_response import SubscriptionsRead200Response
-from workplace_console_client.rest import ApiException
+import workplace_client
+from workplace_client.models.subscriptions_read200_response import SubscriptionsRead200Response
+from workplace_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://127.0.0.1:8001/api
+# Defining the host is optional and defaults to http://https://your-workplace-console.com//api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = workplace_console_client.Configuration(
-    host = "http://127.0.0.1:8001/api"
+configuration = workplace_client.Configuration(
+    host = "http://https://your-workplace-console.com//api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -186,15 +186,15 @@ configuration = workplace_console_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = workplace_console_client.Configuration(
+configuration = workplace_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with workplace_console_client.ApiClient(configuration) as api_client:
+with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workplace_console_client.SubscriptionsApi(api_client)
+    api_instance = workplace_client.SubscriptionsApi(api_client)
     context_id = 'context_id_example' # str | 
 
     try:
@@ -248,16 +248,16 @@ Update subscription status.
 * Basic Authentication (Basic):
 
 ```python
-import workplace_console_client
-from workplace_console_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
-from workplace_console_client.models.service_action import ServiceAction
-from workplace_console_client.rest import ApiException
+import workplace_client
+from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
+from workplace_client.models.service_action import ServiceAction
+from workplace_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://127.0.0.1:8001/api
+# Defining the host is optional and defaults to http://https://your-workplace-console.com//api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = workplace_console_client.Configuration(
-    host = "http://127.0.0.1:8001/api"
+configuration = workplace_client.Configuration(
+    host = "http://https://your-workplace-console.com//api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -266,17 +266,17 @@ configuration = workplace_console_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = workplace_console_client.Configuration(
+configuration = workplace_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with workplace_console_client.ApiClient(configuration) as api_client:
+with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workplace_console_client.SubscriptionsApi(api_client)
+    api_instance = workplace_client.SubscriptionsApi(api_client)
     context_id = 'context_id_example' # str | 
-    data = workplace_console_client.ServiceAction() # ServiceAction | 
+    data = workplace_client.ServiceAction() # ServiceAction | 
 
     try:
         # Update subscription status, delete, suspend, unsuspend, etc...

@@ -3,9 +3,9 @@
 # flake8: noqa
 
 """
-    Truehost Workpace API
+    Workplace Console API
 
-    Truehost Workpace API
+    API for managing email and workplace service subscriptions.
 
     The version of the OpenAPI document: v1
     Contact: support@truehost.cloud
@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.0"
+__version__ = "1.0.8"
 
 # import apis into sdk package
 from workplace_client.api.available_packages_api import AvailablePackagesApi

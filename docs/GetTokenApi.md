@@ -1,6 +1,6 @@
-# workplace_console_client.GetTokenApi
+# workplace_client.GetTokenApi
 
-All URIs are relative to *http://127.0.0.1:8001/api*
+All URIs are relative to *http://https://your-workplace-console.com//api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,15 +18,15 @@ token pair to prove the authentication of those credentials.
 * Basic Authentication (Basic):
 
 ```python
-import workplace_console_client
-from workplace_console_client.models.token_obtain_pair import TokenObtainPair
-from workplace_console_client.rest import ApiException
+import workplace_client
+from workplace_client.models.token_obtain_pair import TokenObtainPair
+from workplace_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://127.0.0.1:8001/api
+# Defining the host is optional and defaults to http://https://your-workplace-console.com//api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = workplace_console_client.Configuration(
-    host = "http://127.0.0.1:8001/api"
+configuration = workplace_client.Configuration(
+    host = "http://https://your-workplace-console.com//api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -35,16 +35,16 @@ configuration = workplace_console_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = workplace_console_client.Configuration(
+configuration = workplace_client.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with workplace_console_client.ApiClient(configuration) as api_client:
+with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = workplace_console_client.GetTokenApi(api_client)
-    data = workplace_console_client.TokenObtainPair() # TokenObtainPair | 
+    api_instance = workplace_client.GetTokenApi(api_client)
+    data = workplace_client.TokenObtainPair() # TokenObtainPair | 
 
     try:
         api_response = api_instance.get_token_create(data)

@@ -1,6 +1,6 @@
 # workplace_client.AvailablePackagesApi
 
-All URIs are relative to *http://https://workplace-console.truehost.cloud/api*
+All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -24,10 +24,10 @@ from workplace_client.models.subscription_details import SubscriptionDetails
 from workplace_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://https://workplace-console.truehost.cloud/api
+# Defining the host is optional and defaults to https://workplace-console.truehost.cloud/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = workplace_client.Configuration(
-    host = "http://https://workplace-console.truehost.cloud/api"
+    host = "https://workplace-console.truehost.cloud/api"
 )
 
 # The client must configure the authentication and authorization parameters

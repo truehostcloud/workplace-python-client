@@ -8,9 +8,9 @@ info:
   license:
     name: BSD License
   version: v1
-host: https://workplace-console.truehost.cloud
+host: workplace-console.truehost.cloud
 schemes:
-- http
+- https
 basePath: /api
 consumes:
 - application/json

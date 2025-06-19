@@ -2,13 +2,13 @@ swagger: '2.0'
 info:
   title: Workplace Console API
   description: API for managing email and workplace service subscriptions.
-  termsOfService: https://www.google.com/policies/terms/
+  termsOfService: https://truehost.com/terms-of-service
   contact:
     email: support@truehost.cloud
   license:
     name: BSD License
   version: v1
-host: https://your-workplace-console.com/
+host: https://workplace-console.truehost.cloud
 schemes:
 - http
 basePath: /api
@@ -17,10 +17,12 @@ consumes:
 produces:
 - application/json
 securityDefinitions:
-  Basic:
-    type: basic
+  BearerAuth:
+    type: apiKey
+    name: Authorization
+    in: header
 security:
-- Basic: []
+- BearerAuth: []
 paths:
   /available-packages/:
     get:

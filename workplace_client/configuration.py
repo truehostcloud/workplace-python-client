@@ -114,7 +114,7 @@ HTTPSignatureAuthSetting = TypedDict(
 AuthSettings = TypedDict(
     "AuthSettings",
     {
-        "Basic": BasicAuthSetting,
+        "BearerAuth": APIKeyAuthSetting,
     },
     total=False,
 )
@@ -167,21 +167,24 @@ class Configuration:
 
     :Example:
 
-    HTTP Basic Authentication Example.
+    API Key Authentication Example.
     Given the following security scheme in the OpenAPI specification:
       components:
         securitySchemes:
-          http_basic_auth:
-            type: http
-            scheme: basic
+          cookieAuth:         # name for the security scheme
+            type: apiKey
+            in: cookie
+            name: JSESSIONID  # cookie name
 
-    Configure API client with HTTP basic authentication:
+    You can programmatically set the cookie:
 
 conf = workplace_client.Configuration(
-    username='the-user',
-    password='the-password',
+    api_key={'cookieAuth': 'abc123'}
+    api_key_prefix={'cookieAuth': 'JSESSIONID'}
 )
 
+    The following cookie will be added to the HTTP request:
+       Cookie: JSESSIONID abc123
     """
 
     _default: ClassVar[Optional[Self]] = None
@@ -207,7 +210,7 @@ conf = workplace_client.Configuration(
     ) -> None:
         """Constructor
         """
-        self._base_path = "http://https://your-workplace-console.com//api" if host is None else host
+        self._base_path = "http://https://workplace-console.truehost.cloud/api" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -509,12 +512,14 @@ conf = workplace_client.Configuration(
         :return: The Auth Settings information dict.
         """
         auth: AuthSettings = {}
-        if self.username is not None and self.password is not None:
-            auth['Basic'] = {
-                'type': 'basic',
+        if 'BearerAuth' in self.api_key:
+            auth['BearerAuth'] = {
+                'type': 'api_key',
                 'in': 'header',
                 'key': 'Authorization',
-                'value': self.get_basic_auth_token()
+                'value': self.get_api_key_with_prefix(
+                    'BearerAuth',
+                ),
             }
         return auth
 
@@ -527,7 +532,7 @@ conf = workplace_client.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v1\n"\
-               "SDK Package Version: 1.0.9".\
+               "SDK Package Version: 1.0.10".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:
@@ -537,7 +542,7 @@ conf = workplace_client.Configuration(
         """
         return [
             {
-                'url': "http://https://your-workplace-console.com//api",
+                'url': "http://https://workplace-console.truehost.cloud/api",
                 'description': "No description provided",
             }
         ]

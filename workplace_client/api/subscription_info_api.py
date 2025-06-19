@@ -291,7 +291,7 @@ class SubscriptionInfoApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'Basic'
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(

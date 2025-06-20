@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  title: Workplace Console API
-  description: API for managing email and workplace service subscriptions.
-  termsOfService: https://truehost.com/terms-of-service
+  title: Truehost Workpace API
+  description: Truehost Workpace API
+  termsOfService: https://www.google.com/policies/terms/
   contact:
     email: support@truehost.cloud
   license:
@@ -10,7 +10,7 @@ info:
   version: v1
 host: workplace-console.truehost.cloud
 schemes:
-- https
+- http
 basePath: /api
 consumes:
 - application/json
@@ -170,6 +170,15 @@ paths:
           schema:
             required:
             - score
+            - message
+            - domain
+            - all_dns_score
+            - found
+            - total
+            - missing_dns
+            - other_missing_dns
+            - found_dns
+            - error
             type: object
             properties:
               score:

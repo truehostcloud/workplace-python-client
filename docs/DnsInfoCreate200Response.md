@@ -6,15 +6,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **score** | **float** |  | 
-**message** | **str** |  | [optional] 
-**domain** | **str** |  | [optional] 
-**all_dns_score** | **float** |  | [optional] 
-**found** | **float** |  | [optional] 
-**total** | **float** |  | [optional] 
-**missing_dns** | **List[object]** |  | [optional] 
-**other_missing_dns** | **List[object]** |  | [optional] 
-**found_dns** | **object** |  | [optional] 
-**error** | **List[str]** |  | [optional] 
+**message** | **str** |  | 
+**domain** | **str** |  | 
+**all_dns_score** | **float** |  | 
+**found** | **float** |  | 
+**total** | **float** |  | 
+**missing_dns** | **List[object]** |  | 
+**other_missing_dns** | **List[object]** |  | 
+**found_dns** | **object** |  | 
+**error** | **List[str]** |  | 
 
 ## Example
 

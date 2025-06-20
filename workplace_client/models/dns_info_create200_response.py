@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,15 +28,15 @@ class DnsInfoCreate200Response(BaseModel):
     DnsInfoCreate200Response
     """ # noqa: E501
     score: Union[StrictFloat, StrictInt]
-    message: Optional[StrictStr] = None
-    domain: Optional[StrictStr] = None
-    all_dns_score: Optional[Union[StrictFloat, StrictInt]] = None
-    found: Optional[Union[StrictFloat, StrictInt]] = None
-    total: Optional[Union[StrictFloat, StrictInt]] = None
-    missing_dns: Optional[List[Dict[str, Any]]] = None
-    other_missing_dns: Optional[List[Dict[str, Any]]] = None
-    found_dns: Optional[Dict[str, Any]] = None
-    error: Optional[List[StrictStr]] = None
+    message: StrictStr
+    domain: StrictStr
+    all_dns_score: Union[StrictFloat, StrictInt]
+    found: Union[StrictFloat, StrictInt]
+    total: Union[StrictFloat, StrictInt]
+    missing_dns: List[Dict[str, Any]]
+    other_missing_dns: List[Dict[str, Any]]
+    found_dns: Dict[str, Any]
+    error: List[StrictStr]
     __properties: ClassVar[List[str]] = ["score", "message", "domain", "all_dns_score", "found", "total", "missing_dns", "other_missing_dns", "found_dns", "error"]
 
     model_config = ConfigDict(

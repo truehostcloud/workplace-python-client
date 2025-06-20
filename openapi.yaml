@@ -170,6 +170,15 @@ paths:
           schema:
             required:
             - score
+            - message
+            - domain
+            - all_dns_score
+            - found
+            - total
+            - missing_dns
+            - other_missing_dns
+            - found_dns
+            - error
             type: object
             properties:
               score:

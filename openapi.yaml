@@ -196,11 +196,11 @@ paths:
               missing_dns:
                 type: array
                 items:
-                  type: object
+                  type: string
               other_missing_dns:
                 type: array
                 items:
-                  type: object
+                  type: string
               found_dns:
                 type: object
               error:

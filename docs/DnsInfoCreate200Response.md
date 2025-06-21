@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **all_dns_score** | **float** |  | 
 **found** | **float** |  | 
 **total** | **float** |  | 
-**missing_dns** | **List[object]** |  | 
-**other_missing_dns** | **List[object]** |  | 
+**missing_dns** | **List[str]** |  | 
+**other_missing_dns** | **List[str]** |  | 
 **found_dns** | **object** |  | 
 **error** | **List[str]** |  | 
 

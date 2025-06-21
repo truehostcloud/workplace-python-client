@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **total** | **float** |  | 
 **missing_dns** | **List[str]** |  | 
 **other_missing_dns** | **List[str]** |  | 
-**found_dns** | **object** |  | 
+**found_dns** | [**DnsInfoCreate200ResponseFoundDns**](DnsInfoCreate200ResponseFoundDns.md) |  | 
 **error** | **List[str]** |  | 
 
 ## Example

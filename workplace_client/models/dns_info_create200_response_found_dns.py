@@ -18,27 +18,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
-from workplace_client.models.dns_info_create200_response_found_dns import DnsInfoCreate200ResponseFoundDns
+from pydantic import BaseModel, ConfigDict, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DnsInfoCreate200Response(BaseModel):
+class DnsInfoCreate200ResponseFoundDns(BaseModel):
     """
-    DnsInfoCreate200Response
+    DnsInfoCreate200ResponseFoundDns
     """ # noqa: E501
-    score: Union[StrictFloat, StrictInt]
-    message: StrictStr
-    domain: StrictStr
-    all_dns_score: Union[StrictFloat, StrictInt]
-    found: Union[StrictFloat, StrictInt]
-    total: Union[StrictFloat, StrictInt]
-    missing_dns: List[StrictStr]
-    other_missing_dns: List[StrictStr]
-    found_dns: DnsInfoCreate200ResponseFoundDns
-    error: List[StrictStr]
-    __properties: ClassVar[List[str]] = ["score", "message", "domain", "all_dns_score", "found", "total", "missing_dns", "other_missing_dns", "found_dns", "error"]
+    type: Optional[StrictStr] = None
+    value: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["type", "value"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -58,7 +49,7 @@ class DnsInfoCreate200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DnsInfoCreate200Response from a JSON string"""
+        """Create an instance of DnsInfoCreate200ResponseFoundDns from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,14 +70,11 @@ class DnsInfoCreate200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of found_dns
-        if self.found_dns:
-            _dict['found_dns'] = self.found_dns.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DnsInfoCreate200Response from a dict"""
+        """Create an instance of DnsInfoCreate200ResponseFoundDns from a dict"""
         if obj is None:
             return None
 
@@ -94,16 +82,8 @@ class DnsInfoCreate200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "score": obj.get("score"),
-            "message": obj.get("message"),
-            "domain": obj.get("domain"),
-            "all_dns_score": obj.get("all_dns_score"),
-            "found": obj.get("found"),
-            "total": obj.get("total"),
-            "missing_dns": obj.get("missing_dns"),
-            "other_missing_dns": obj.get("other_missing_dns"),
-            "found_dns": DnsInfoCreate200ResponseFoundDns.from_dict(obj["found_dns"]) if obj.get("found_dns") is not None else None,
-            "error": obj.get("error")
+            "type": obj.get("type"),
+            "value": obj.get("value")
         })
         return _obj
 

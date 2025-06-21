@@ -203,6 +203,11 @@ paths:
                   type: string
               found_dns:
                 type: object
+                properties:
+                  type:
+                    type: string
+                  value:
+                    type: string                  
               error:
                 type: array
                 items:

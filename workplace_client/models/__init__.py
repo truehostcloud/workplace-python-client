@@ -21,6 +21,7 @@ from workplace_client.models.change_quota_create200_response import ChangeQuotaC
 from workplace_client.models.delete_alias import DeleteAlias
 from workplace_client.models.delete_email import DeleteEmail
 from workplace_client.models.dns_info_create200_response import DnsInfoCreate200Response
+from workplace_client.models.dns_info_create200_response_found_dns import DnsInfoCreate200ResponseFoundDns
 from workplace_client.models.dns_info_create_request import DnsInfoCreateRequest
 from workplace_client.models.domain import Domain
 from workplace_client.models.domain_action import DomainAction

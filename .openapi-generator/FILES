@@ -15,6 +15,7 @@ docs/DeleteEmail.md
 docs/DeleteEmailApi.md
 docs/DnsInfoApi.md
 docs/DnsInfoCreate200Response.md
+docs/DnsInfoCreate200ResponseFoundDns.md
 docs/DnsInfoCreateRequest.md
 docs/Domain.md
 docs/DomainAction.md
@@ -79,6 +80,7 @@ workplace_client/models/change_quota_create200_response.py
 workplace_client/models/delete_alias.py
 workplace_client/models/delete_email.py
 workplace_client/models/dns_info_create200_response.py
+workplace_client/models/dns_info_create200_response_found_dns.py
 workplace_client/models/dns_info_create_request.py
 workplace_client/models/domain.py
 workplace_client/models/domain_action.py

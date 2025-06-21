@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.12"
+__version__ = "1.0.13"
 
 # import apis into sdk package
 from workplace_client.api.available_packages_api import AvailablePackagesApi

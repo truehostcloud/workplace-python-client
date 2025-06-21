@@ -196,18 +196,51 @@ paths:
               missing_dns:
                 type: array
                 items:
-                  type: string
+                  required:
+                  - host
+                  - type
+                  - value
+                  - priority
+                  - ttl
+                  type: object
+                  properties:
+                    host:
+                      type: string
+                    type:
+                      type: string
+                    value:
+                      type: string
+                    priority:
+                      type: string
+                    ttl:
+                      type: integer
               other_missing_dns:
                 type: array
                 items:
-                  type: string
+                  required:
+                  - host
+                  - type
+                  - value
+                  - priority
+                  - ttl
+                  type: object
+                  properties:
+                    host:
+                      type: string
+                    type:
+                      type: string
+                    value:
+                      type: string
+                    priority:
+                      type: string
+                    ttl:
+                      type: integer
               found_dns:
                 type: object
-                properties:
-                  type:
+                additionalProperties:
+                  type: array
+                  items:
                     type: string
-                  value:
-                    type: string                  
               error:
                 type: array
                 items:

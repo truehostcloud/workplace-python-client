@@ -4,19 +4,19 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**domain_alias_create**](DomainAliasApi.md#domain_alias_create) | **POST** /domain-alias/ | Get domain alias list.
+[**domain_alias_create**](DomainAliasApi.md#domain_alias_create) | **POST** /domain-alias/ | Get domain alias list
 
 
 # **domain_alias_create**
-> List[AliasDisplay] domain_alias_create(data)
+> List[AliasDisplay] domain_alias_create(domain)
 
-Get domain alias list.
+Get domain alias list
 
-Get domain alias list.
+Get domain alias list
 
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
@@ -36,21 +36,20 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.DomainAliasApi(api_client)
-    data = workplace_client.Domain() # Domain | 
+    domain = workplace_client.Domain() # Domain | 
 
     try:
-        # Get domain alias list.
-        api_response = api_instance.domain_alias_create(data)
+        # Get domain alias list
+        api_response = api_instance.domain_alias_create(domain)
         print("The response of DomainAliasApi->domain_alias_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,7 +63,7 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**Domain**](Domain.md)|  | 
+ **domain** | [**Domain**](Domain.md)|  | 
 
 ### Return type
 
@@ -83,7 +82,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
+**200** | List of domain aliases |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

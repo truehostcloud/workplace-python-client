@@ -17,8 +17,10 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
-from workplace_client.models.import_create_request import ImportCreateRequest
+from pydantic import Field, StrictBytes, StrictStr
+from typing import Tuple, Union
+from typing_extensions import Annotated
+from workplace_client.models.standard_response import StandardResponse
 
 from workplace_client.api_client import ApiClient, RequestSerialized
 from workplace_client.api_response import ApiResponse
@@ -41,7 +43,8 @@ class ImportApi:
     @validate_call
     def import_create(
         self,
-        data: ImportCreateRequest,
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="CSV or excel file containing email accounts")],
+        domain: Annotated[StrictStr, Field(description="Domain to associate with emails")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,13 +57,15 @@ class ImportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ChangeQuotaCreate200Response:
-        """Bulk create emails.
+    ) -> StandardResponse:
+        """Bulk create emails
 
-        Bulk create emails via uploaded file and domain.
+        Bulk create emails via uploaded file and domain
 
-        :param data: (required)
-        :type data: ImportCreateRequest
+        :param file: CSV or excel file containing email accounts (required)
+        :type file: bytearray
+        :param domain: Domain to associate with emails (required)
+        :type domain: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +89,8 @@ class ImportApi:
         """ # noqa: E501
 
         _param = self._import_create_serialize(
-            data=data,
+            file=file,
+            domain=domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -92,7 +98,7 @@ class ImportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -108,7 +114,8 @@ class ImportApi:
     @validate_call
     def import_create_with_http_info(
         self,
-        data: ImportCreateRequest,
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="CSV or excel file containing email accounts")],
+        domain: Annotated[StrictStr, Field(description="Domain to associate with emails")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -121,13 +128,15 @@ class ImportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ChangeQuotaCreate200Response]:
-        """Bulk create emails.
+    ) -> ApiResponse[StandardResponse]:
+        """Bulk create emails
 
-        Bulk create emails via uploaded file and domain.
+        Bulk create emails via uploaded file and domain
 
-        :param data: (required)
-        :type data: ImportCreateRequest
+        :param file: CSV or excel file containing email accounts (required)
+        :type file: bytearray
+        :param domain: Domain to associate with emails (required)
+        :type domain: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -151,7 +160,8 @@ class ImportApi:
         """ # noqa: E501
 
         _param = self._import_create_serialize(
-            data=data,
+            file=file,
+            domain=domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -159,7 +169,7 @@ class ImportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -175,7 +185,8 @@ class ImportApi:
     @validate_call
     def import_create_without_preload_content(
         self,
-        data: ImportCreateRequest,
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="CSV or excel file containing email accounts")],
+        domain: Annotated[StrictStr, Field(description="Domain to associate with emails")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -189,12 +200,14 @@ class ImportApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk create emails.
+        """Bulk create emails
 
-        Bulk create emails via uploaded file and domain.
+        Bulk create emails via uploaded file and domain
 
-        :param data: (required)
-        :type data: ImportCreateRequest
+        :param file: CSV or excel file containing email accounts (required)
+        :type file: bytearray
+        :param domain: Domain to associate with emails (required)
+        :type domain: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -218,7 +231,8 @@ class ImportApi:
         """ # noqa: E501
 
         _param = self._import_create_serialize(
-            data=data,
+            file=file,
+            domain=domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -226,7 +240,7 @@ class ImportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -237,7 +251,8 @@ class ImportApi:
 
     def _import_create_serialize(
         self,
-        data,
+        file,
+        domain,
         _request_auth,
         _content_type,
         _headers,
@@ -262,9 +277,11 @@ class ImportApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
+        if file is not None:
+            _files['file'] = file
+        if domain is not None:
+            _form_params.append(('domain', domain))
         # process the body parameter
-        if data is not None:
-            _body_params = data
 
 
         # set the HTTP header `Accept`
@@ -282,7 +299,7 @@ class ImportApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'multipart/form-data'
                     ]
                 )
             )

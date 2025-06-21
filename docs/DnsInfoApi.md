@@ -4,20 +4,24 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**dns_info_create**](DnsInfoApi.md#dns_info_create) | **POST** /dns-info/ | 
+[**dns_info_create**](DnsInfoApi.md#dns_info_create) | **POST** /dns-info/ | Get DNS information
 
 
 # **dns_info_create**
-> DnsInfoCreate200Response dns_info_create(data)
+> DnsInfoResponse dns_info_create(dns_info_request)
+
+Get DNS information
+
+Get DNS configuration information for a domain
 
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
-from workplace_client.models.dns_info_create200_response import DnsInfoCreate200Response
-from workplace_client.models.dns_info_create_request import DnsInfoCreateRequest
+from workplace_client.models.dns_info_request import DnsInfoRequest
+from workplace_client.models.dns_info_response import DnsInfoResponse
 from workplace_client.rest import ApiException
 from pprint import pprint
 
@@ -32,20 +36,20 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.DnsInfoApi(api_client)
-    data = workplace_client.DnsInfoCreateRequest() # DnsInfoCreateRequest | 
+    dns_info_request = workplace_client.DnsInfoRequest() # DnsInfoRequest | 
 
     try:
-        api_response = api_instance.dns_info_create(data)
+        # Get DNS information
+        api_response = api_instance.dns_info_create(dns_info_request)
         print("The response of DnsInfoApi->dns_info_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -59,11 +63,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**DnsInfoCreateRequest**](DnsInfoCreateRequest.md)|  | 
+ **dns_info_request** | [**DnsInfoRequest**](DnsInfoRequest.md)|  | 
 
 ### Return type
 
-[**DnsInfoCreate200Response**](DnsInfoCreate200Response.md)
+[**DnsInfoResponse**](DnsInfoResponse.md)
 
 ### Authorization
 
@@ -78,7 +82,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | DNS information response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

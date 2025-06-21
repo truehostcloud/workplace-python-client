@@ -4,24 +4,24 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_alias_create**](CreateAliasApi.md#create_alias_create) | **POST** /create-alias/ | Create email alias.
+[**create_alias_create**](CreateAliasApi.md#create_alias_create) | **POST** /create-alias/ | Create email alias
 
 
 # **create_alias_create**
-> ChangeQuotaCreate200Response create_alias_create(data)
+> StandardResponse create_alias_create(email_alias)
 
-Create email alias.
+Create email alias
 
-Create email alias.
+Create email alias
 
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
-from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
 from workplace_client.models.email_alias import EmailAlias
+from workplace_client.models.standard_response import StandardResponse
 from workplace_client.rest import ApiException
 from pprint import pprint
 
@@ -36,21 +36,20 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.CreateAliasApi(api_client)
-    data = workplace_client.EmailAlias() # EmailAlias | 
+    email_alias = workplace_client.EmailAlias() # EmailAlias | 
 
     try:
-        # Create email alias.
-        api_response = api_instance.create_alias_create(data)
+        # Create email alias
+        api_response = api_instance.create_alias_create(email_alias)
         print("The response of CreateAliasApi->create_alias_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,11 +63,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**EmailAlias**](EmailAlias.md)|  | 
+ **email_alias** | [**EmailAlias**](EmailAlias.md)|  | 
 
 ### Return type
 
-[**ChangeQuotaCreate200Response**](ChangeQuotaCreate200Response.md)
+[**StandardResponse**](StandardResponse.md)
 
 ### Authorization
 

@@ -4,18 +4,20 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_token_create**](GetTokenApi.md#get_token_create) | **POST** /get-token/ | 
+[**get_token_create**](GetTokenApi.md#get_token_create) | **POST** /get-token/ | Obtain authentication token
 
 
 # **get_token_create**
-> TokenObtainPair get_token_create(data)
+> TokenObtainPair get_token_create(token_obtain_pair)
+
+Obtain authentication token
 
 Takes a set of user credentials and returns an access and refresh JSON web
 token pair to prove the authentication of those credentials.
 
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
@@ -34,20 +36,20 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.GetTokenApi(api_client)
-    data = workplace_client.TokenObtainPair() # TokenObtainPair | 
+    token_obtain_pair = workplace_client.TokenObtainPair() # TokenObtainPair | 
 
     try:
-        api_response = api_instance.get_token_create(data)
+        # Obtain authentication token
+        api_response = api_instance.get_token_create(token_obtain_pair)
         print("The response of GetTokenApi->get_token_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -61,7 +63,7 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**TokenObtainPair**](TokenObtainPair.md)|  | 
+ **token_obtain_pair** | [**TokenObtainPair**](TokenObtainPair.md)|  | 
 
 ### Return type
 
@@ -80,7 +82,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** |  |  -  |
+**201** | Token pair created |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

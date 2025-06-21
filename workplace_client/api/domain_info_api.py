@@ -41,7 +41,7 @@ class DomainInfoApi:
     @validate_call
     def domain_info_create(
         self,
-        data: SubScriptionInfo,
+        sub_scription_info: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -55,12 +55,12 @@ class DomainInfoApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SubscriptionInfoResponse:
-        """Get domain subscription details.
+        """Get domain subscription details
 
-        Get domain subscription details and emails list.
+        Get domain subscription details and emails list
 
-        :param data: (required)
-        :type data: SubScriptionInfo
+        :param sub_scription_info: (required)
+        :type sub_scription_info: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +84,7 @@ class DomainInfoApi:
         """ # noqa: E501
 
         _param = self._domain_info_create_serialize(
-            data=data,
+            sub_scription_info=sub_scription_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -108,7 +108,7 @@ class DomainInfoApi:
     @validate_call
     def domain_info_create_with_http_info(
         self,
-        data: SubScriptionInfo,
+        sub_scription_info: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -122,12 +122,12 @@ class DomainInfoApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SubscriptionInfoResponse]:
-        """Get domain subscription details.
+        """Get domain subscription details
 
-        Get domain subscription details and emails list.
+        Get domain subscription details and emails list
 
-        :param data: (required)
-        :type data: SubScriptionInfo
+        :param sub_scription_info: (required)
+        :type sub_scription_info: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -151,7 +151,7 @@ class DomainInfoApi:
         """ # noqa: E501
 
         _param = self._domain_info_create_serialize(
-            data=data,
+            sub_scription_info=sub_scription_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -175,7 +175,7 @@ class DomainInfoApi:
     @validate_call
     def domain_info_create_without_preload_content(
         self,
-        data: SubScriptionInfo,
+        sub_scription_info: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -189,12 +189,12 @@ class DomainInfoApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get domain subscription details.
+        """Get domain subscription details
 
-        Get domain subscription details and emails list.
+        Get domain subscription details and emails list
 
-        :param data: (required)
-        :type data: SubScriptionInfo
+        :param sub_scription_info: (required)
+        :type sub_scription_info: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -218,7 +218,7 @@ class DomainInfoApi:
         """ # noqa: E501
 
         _param = self._domain_info_create_serialize(
-            data=data,
+            sub_scription_info=sub_scription_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -237,7 +237,7 @@ class DomainInfoApi:
 
     def _domain_info_create_serialize(
         self,
-        data,
+        sub_scription_info,
         _request_auth,
         _content_type,
         _headers,
@@ -263,8 +263,8 @@ class DomainInfoApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if sub_scription_info is not None:
+            _body_params = sub_scription_info
 
 
         # set the HTTP header `Accept`

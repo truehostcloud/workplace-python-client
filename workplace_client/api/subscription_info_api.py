@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from workplace_client.models.sub_scription_info import SubScriptionInfo
-from workplace_client.models.subscription_info_create200_response import SubscriptionInfoCreate200Response
+from workplace_client.models.subscription_usage_response import SubscriptionUsageResponse
 
 from workplace_client.api_client import ApiClient, RequestSerialized
 from workplace_client.api_response import ApiResponse
@@ -41,7 +41,7 @@ class SubscriptionInfoApi:
     @validate_call
     def subscription_info_create(
         self,
-        data: SubScriptionInfo,
+        sub_scription_info: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,13 +54,13 @@ class SubscriptionInfoApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SubscriptionInfoCreate200Response:
-        """Get subscription usage info.
+    ) -> SubscriptionUsageResponse:
+        """Get subscription usage info
 
-        Get subscription usage info.
+        Get subscription usage info
 
-        :param data: (required)
-        :type data: SubScriptionInfo
+        :param sub_scription_info: (required)
+        :type sub_scription_info: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +84,7 @@ class SubscriptionInfoApi:
         """ # noqa: E501
 
         _param = self._subscription_info_create_serialize(
-            data=data,
+            sub_scription_info=sub_scription_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -92,7 +92,7 @@ class SubscriptionInfoApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionInfoCreate200Response",
+            '200': "SubscriptionUsageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -108,7 +108,7 @@ class SubscriptionInfoApi:
     @validate_call
     def subscription_info_create_with_http_info(
         self,
-        data: SubScriptionInfo,
+        sub_scription_info: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -121,13 +121,13 @@ class SubscriptionInfoApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SubscriptionInfoCreate200Response]:
-        """Get subscription usage info.
+    ) -> ApiResponse[SubscriptionUsageResponse]:
+        """Get subscription usage info
 
-        Get subscription usage info.
+        Get subscription usage info
 
-        :param data: (required)
-        :type data: SubScriptionInfo
+        :param sub_scription_info: (required)
+        :type sub_scription_info: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -151,7 +151,7 @@ class SubscriptionInfoApi:
         """ # noqa: E501
 
         _param = self._subscription_info_create_serialize(
-            data=data,
+            sub_scription_info=sub_scription_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -159,7 +159,7 @@ class SubscriptionInfoApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionInfoCreate200Response",
+            '200': "SubscriptionUsageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -175,7 +175,7 @@ class SubscriptionInfoApi:
     @validate_call
     def subscription_info_create_without_preload_content(
         self,
-        data: SubScriptionInfo,
+        sub_scription_info: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -189,12 +189,12 @@ class SubscriptionInfoApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get subscription usage info.
+        """Get subscription usage info
 
-        Get subscription usage info.
+        Get subscription usage info
 
-        :param data: (required)
-        :type data: SubScriptionInfo
+        :param sub_scription_info: (required)
+        :type sub_scription_info: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -218,7 +218,7 @@ class SubscriptionInfoApi:
         """ # noqa: E501
 
         _param = self._subscription_info_create_serialize(
-            data=data,
+            sub_scription_info=sub_scription_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -226,7 +226,7 @@ class SubscriptionInfoApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionInfoCreate200Response",
+            '200': "SubscriptionUsageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -237,7 +237,7 @@ class SubscriptionInfoApi:
 
     def _subscription_info_create_serialize(
         self,
-        data,
+        sub_scription_info,
         _request_auth,
         _content_type,
         _headers,
@@ -263,8 +263,8 @@ class SubscriptionInfoApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if sub_scription_info is not None:
+            _body_params = sub_scription_info
 
 
         # set the HTTP header `Accept`

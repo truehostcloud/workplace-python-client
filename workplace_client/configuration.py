@@ -114,7 +114,7 @@ HTTPSignatureAuthSetting = TypedDict(
 AuthSettings = TypedDict(
     "AuthSettings",
     {
-        "BearerAuth": APIKeyAuthSetting,
+        "BearerAuth": BearerFormatAuthSetting,
     },
     total=False,
 )
@@ -166,25 +166,6 @@ class Configuration:
       in PEM (str) or DER (bytes) format.
 
     :Example:
-
-    API Key Authentication Example.
-    Given the following security scheme in the OpenAPI specification:
-      components:
-        securitySchemes:
-          cookieAuth:         # name for the security scheme
-            type: apiKey
-            in: cookie
-            name: JSESSIONID  # cookie name
-
-    You can programmatically set the cookie:
-
-conf = workplace_client.Configuration(
-    api_key={'cookieAuth': 'abc123'}
-    api_key_prefix={'cookieAuth': 'JSESSIONID'}
-)
-
-    The following cookie will be added to the HTTP request:
-       Cookie: JSESSIONID abc123
     """
 
     _default: ClassVar[Optional[Self]] = None
@@ -512,14 +493,13 @@ conf = workplace_client.Configuration(
         :return: The Auth Settings information dict.
         """
         auth: AuthSettings = {}
-        if 'BearerAuth' in self.api_key:
+        if self.access_token is not None:
             auth['BearerAuth'] = {
-                'type': 'api_key',
+                'type': 'bearer',
                 'in': 'header',
+                'format': 'JWT',
                 'key': 'Authorization',
-                'value': self.get_api_key_with_prefix(
-                    'BearerAuth',
-                ),
+                'value': 'Bearer ' + self.access_token
             }
         return auth
 
@@ -532,7 +512,7 @@ conf = workplace_client.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v1\n"\
-               "SDK Package Version: 1.0.14".\
+               "SDK Package Version: 1.0.15".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:
@@ -543,7 +523,7 @@ conf = workplace_client.Configuration(
         return [
             {
                 'url': "https://workplace-console.truehost.cloud/api",
-                'description': "No description provided",
+                'description': "Production server",
             }
         ]
 

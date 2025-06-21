@@ -4,27 +4,28 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**subscriptions_create**](SubscriptionsApi.md#subscriptions_create) | **POST** /subscriptions/ | Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
-[**subscriptions_list**](SubscriptionsApi.md#subscriptions_list) | **GET** /subscriptions/ | 
+[**subscriptions_create**](SubscriptionsApi.md#subscriptions_create) | **POST** /subscriptions/ | Create a new email subscription
+[**subscriptions_list**](SubscriptionsApi.md#subscriptions_list) | **GET** /subscriptions/ | List subscriptions
 [**subscriptions_read**](SubscriptionsApi.md#subscriptions_read) | **GET** /subscriptions/{context_id}/ | Get subscription details
-[**update_subscription_status**](SubscriptionsApi.md#update_subscription_status) | **POST** /subscriptions/{context_id}/ | Update subscription status, delete, suspend, unsuspend, etc...
+[**update_subscription_status**](SubscriptionsApi.md#update_subscription_status) | **POST** /subscriptions/{context_id}/ | Update subscription status
 
 
 # **subscriptions_create**
-> ChangeQuotaCreate200Response subscriptions_create(data)
-
-Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
+> StandardResponse subscriptions_create(open_exchange_create_account)
 
 Create a new email subscription
 
+Create a new email subscription, it will create a new subscription
+for the domain if emails list is not empty
+
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
-from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
 from workplace_client.models.open_exchange_create_account import OpenExchangeCreateAccount
+from workplace_client.models.standard_response import StandardResponse
 from workplace_client.rest import ApiException
 from pprint import pprint
 
@@ -39,21 +40,20 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.SubscriptionsApi(api_client)
-    data = workplace_client.OpenExchangeCreateAccount() # OpenExchangeCreateAccount | 
+    open_exchange_create_account = workplace_client.OpenExchangeCreateAccount() # OpenExchangeCreateAccount | 
 
     try:
-        # Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
-        api_response = api_instance.subscriptions_create(data)
+        # Create a new email subscription
+        api_response = api_instance.subscriptions_create(open_exchange_create_account)
         print("The response of SubscriptionsApi->subscriptions_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -67,11 +67,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**OpenExchangeCreateAccount**](OpenExchangeCreateAccount.md)|  | 
+ **open_exchange_create_account** | [**OpenExchangeCreateAccount**](OpenExchangeCreateAccount.md)|  | 
 
 ### Return type
 
-[**ChangeQuotaCreate200Response**](ChangeQuotaCreate200Response.md)
+[**StandardResponse**](StandardResponse.md)
 
 ### Authorization
 
@@ -91,11 +91,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscriptions_list**
-> subscriptions_list()
+> object subscriptions_list()
+
+List subscriptions
+
+Get list of subscriptions
 
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
@@ -113,11 +117,10 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
@@ -125,7 +128,10 @@ with workplace_client.ApiClient(configuration) as api_client:
     api_instance = workplace_client.SubscriptionsApi(api_client)
 
     try:
-        api_instance.subscriptions_list()
+        # List subscriptions
+        api_response = api_instance.subscriptions_list()
+        print("The response of SubscriptionsApi->subscriptions_list:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SubscriptionsApi->subscriptions_list: %s\n" % e)
 ```
@@ -138,7 +144,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -147,18 +153,18 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
+**200** | List of subscriptions |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscriptions_read**
-> SubscriptionsRead200Response subscriptions_read(context_id)
+> SubscriptionsReadResponse subscriptions_read(context_id)
 
 Get subscription details
 
@@ -166,11 +172,11 @@ Get subscription details
 
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
-from workplace_client.models.subscriptions_read200_response import SubscriptionsRead200Response
+from workplace_client.models.subscriptions_read_response import SubscriptionsReadResponse
 from workplace_client.rest import ApiException
 from pprint import pprint
 
@@ -185,11 +191,10 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
@@ -217,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SubscriptionsRead200Response**](SubscriptionsRead200Response.md)
+[**SubscriptionsReadResponse**](SubscriptionsReadResponse.md)
 
 ### Authorization
 
@@ -232,25 +237,25 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | Subscription details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_subscription_status**
-> ChangeQuotaCreate200Response update_subscription_status(context_id, data)
+> StandardResponse update_subscription_status(context_id, service_action)
+
+Update subscription status
 
 Update subscription status, delete, suspend, unsuspend, etc...
 
-Update subscription status. 
-
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
-from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
 from workplace_client.models.service_action import ServiceAction
+from workplace_client.models.standard_response import StandardResponse
 from workplace_client.rest import ApiException
 from pprint import pprint
 
@@ -265,22 +270,21 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.SubscriptionsApi(api_client)
     context_id = 'context_id_example' # str | 
-    data = workplace_client.ServiceAction() # ServiceAction | 
+    service_action = workplace_client.ServiceAction() # ServiceAction | 
 
     try:
-        # Update subscription status, delete, suspend, unsuspend, etc...
-        api_response = api_instance.update_subscription_status(context_id, data)
+        # Update subscription status
+        api_response = api_instance.update_subscription_status(context_id, service_action)
         print("The response of SubscriptionsApi->update_subscription_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -295,11 +299,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **context_id** | **str**|  | 
- **data** | [**ServiceAction**](ServiceAction.md)|  | 
+ **service_action** | [**ServiceAction**](ServiceAction.md)|  | 
 
 ### Return type
 
-[**ChangeQuotaCreate200Response**](ChangeQuotaCreate200Response.md)
+[**StandardResponse**](StandardResponse.md)
 
 ### Authorization
 

@@ -40,7 +40,7 @@ class GetTokenApi:
     @validate_call
     def get_token_create(
         self,
-        data: TokenObtainPair,
+        token_obtain_pair: TokenObtainPair,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,12 +54,12 @@ class GetTokenApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TokenObtainPair:
-        """get_token_create
+        """Obtain authentication token
 
         Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
 
-        :param data: (required)
-        :type data: TokenObtainPair
+        :param token_obtain_pair: (required)
+        :type token_obtain_pair: TokenObtainPair
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -83,7 +83,7 @@ class GetTokenApi:
         """ # noqa: E501
 
         _param = self._get_token_create_serialize(
-            data=data,
+            token_obtain_pair=token_obtain_pair,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -107,7 +107,7 @@ class GetTokenApi:
     @validate_call
     def get_token_create_with_http_info(
         self,
-        data: TokenObtainPair,
+        token_obtain_pair: TokenObtainPair,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -121,12 +121,12 @@ class GetTokenApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TokenObtainPair]:
-        """get_token_create
+        """Obtain authentication token
 
         Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
 
-        :param data: (required)
-        :type data: TokenObtainPair
+        :param token_obtain_pair: (required)
+        :type token_obtain_pair: TokenObtainPair
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -150,7 +150,7 @@ class GetTokenApi:
         """ # noqa: E501
 
         _param = self._get_token_create_serialize(
-            data=data,
+            token_obtain_pair=token_obtain_pair,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -174,7 +174,7 @@ class GetTokenApi:
     @validate_call
     def get_token_create_without_preload_content(
         self,
-        data: TokenObtainPair,
+        token_obtain_pair: TokenObtainPair,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -188,12 +188,12 @@ class GetTokenApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_token_create
+        """Obtain authentication token
 
         Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
 
-        :param data: (required)
-        :type data: TokenObtainPair
+        :param token_obtain_pair: (required)
+        :type token_obtain_pair: TokenObtainPair
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -217,7 +217,7 @@ class GetTokenApi:
         """ # noqa: E501
 
         _param = self._get_token_create_serialize(
-            data=data,
+            token_obtain_pair=token_obtain_pair,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -236,7 +236,7 @@ class GetTokenApi:
 
     def _get_token_create_serialize(
         self,
-        data,
+        token_obtain_pair,
         _request_auth,
         _content_type,
         _headers,
@@ -262,8 +262,8 @@ class GetTokenApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if token_obtain_pair is not None:
+            _body_params = token_obtain_pair
 
 
         # set the HTTP header `Accept`

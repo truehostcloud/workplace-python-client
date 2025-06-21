@@ -54,9 +54,9 @@ class AvailablePackagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SubscriptionDetails]:
-        """Get available subscriptions.
+        """Get available subscriptions
 
-        Get available subscriptions.
+        Get available subscriptions
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -117,9 +117,9 @@ class AvailablePackagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SubscriptionDetails]]:
-        """Get available subscriptions.
+        """Get available subscriptions
 
-        Get available subscriptions.
+        Get available subscriptions
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -180,9 +180,9 @@ class AvailablePackagesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get available subscriptions.
+        """Get available subscriptions
 
-        Get available subscriptions.
+        Get available subscriptions
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

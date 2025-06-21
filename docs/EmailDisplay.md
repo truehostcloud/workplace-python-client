@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] [readonly] 
 **name** | **str** |  | 
-**email_quota** | **int** | Email qoata in GB | [optional] 
-**max_quota** | **int** | Max email qoata in GB | [optional] 
-**used_quota** | **int** | Used qoata in GB | [optional] 
+**email_quota** | **int** | Email quota in GB | [optional] 
+**max_quota** | **int** | Max email quota in GB | [optional] 
+**used_quota** | **int** | Used quota in GB | [optional] 
 **email_id** | **int** |  | [optional] 
 **display_name** | **str** |  | [optional] 
 **order** | **int** |  | [optional] 

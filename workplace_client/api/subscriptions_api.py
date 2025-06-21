@@ -18,10 +18,11 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictStr
-from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
+from typing import Any, Dict
 from workplace_client.models.open_exchange_create_account import OpenExchangeCreateAccount
 from workplace_client.models.service_action import ServiceAction
-from workplace_client.models.subscriptions_read200_response import SubscriptionsRead200Response
+from workplace_client.models.standard_response import StandardResponse
+from workplace_client.models.subscriptions_read_response import SubscriptionsReadResponse
 
 from workplace_client.api_client import ApiClient, RequestSerialized
 from workplace_client.api_response import ApiResponse
@@ -44,7 +45,7 @@ class SubscriptionsApi:
     @validate_call
     def subscriptions_create(
         self,
-        data: OpenExchangeCreateAccount,
+        open_exchange_create_account: OpenExchangeCreateAccount,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -57,13 +58,13 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ChangeQuotaCreate200Response:
-        """Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
+    ) -> StandardResponse:
+        """Create a new email subscription
 
-        Create a new email subscription
+        Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
 
-        :param data: (required)
-        :type data: OpenExchangeCreateAccount
+        :param open_exchange_create_account: (required)
+        :type open_exchange_create_account: OpenExchangeCreateAccount
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,7 +88,7 @@ class SubscriptionsApi:
         """ # noqa: E501
 
         _param = self._subscriptions_create_serialize(
-            data=data,
+            open_exchange_create_account=open_exchange_create_account,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -95,7 +96,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -111,7 +112,7 @@ class SubscriptionsApi:
     @validate_call
     def subscriptions_create_with_http_info(
         self,
-        data: OpenExchangeCreateAccount,
+        open_exchange_create_account: OpenExchangeCreateAccount,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -124,13 +125,13 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ChangeQuotaCreate200Response]:
-        """Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
+    ) -> ApiResponse[StandardResponse]:
+        """Create a new email subscription
 
-        Create a new email subscription
+        Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
 
-        :param data: (required)
-        :type data: OpenExchangeCreateAccount
+        :param open_exchange_create_account: (required)
+        :type open_exchange_create_account: OpenExchangeCreateAccount
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -154,7 +155,7 @@ class SubscriptionsApi:
         """ # noqa: E501
 
         _param = self._subscriptions_create_serialize(
-            data=data,
+            open_exchange_create_account=open_exchange_create_account,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -162,7 +163,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -178,7 +179,7 @@ class SubscriptionsApi:
     @validate_call
     def subscriptions_create_without_preload_content(
         self,
-        data: OpenExchangeCreateAccount,
+        open_exchange_create_account: OpenExchangeCreateAccount,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -192,12 +193,12 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
+        """Create a new email subscription
 
-        Create a new email subscription
+        Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
 
-        :param data: (required)
-        :type data: OpenExchangeCreateAccount
+        :param open_exchange_create_account: (required)
+        :type open_exchange_create_account: OpenExchangeCreateAccount
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -221,7 +222,7 @@ class SubscriptionsApi:
         """ # noqa: E501
 
         _param = self._subscriptions_create_serialize(
-            data=data,
+            open_exchange_create_account=open_exchange_create_account,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -229,7 +230,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -240,7 +241,7 @@ class SubscriptionsApi:
 
     def _subscriptions_create_serialize(
         self,
-        data,
+        open_exchange_create_account,
         _request_auth,
         _content_type,
         _headers,
@@ -266,8 +267,8 @@ class SubscriptionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if open_exchange_create_account is not None:
+            _body_params = open_exchange_create_account
 
 
         # set the HTTP header `Accept`
@@ -330,9 +331,10 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """subscriptions_list
+    ) -> object:
+        """List subscriptions
 
+        Get list of subscriptions
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -364,7 +366,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -392,9 +394,10 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """subscriptions_list
+    ) -> ApiResponse[object]:
+        """List subscriptions
 
+        Get list of subscriptions
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -426,7 +429,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -455,8 +458,9 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """subscriptions_list
+        """List subscriptions
 
+        Get list of subscriptions
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -488,7 +492,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "object",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -526,6 +530,13 @@ class SubscriptionsApi:
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -567,7 +578,7 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SubscriptionsRead200Response:
+    ) -> SubscriptionsReadResponse:
         """Get subscription details
 
         Get subscription details
@@ -605,7 +616,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionsRead200Response",
+            '200': "SubscriptionsReadResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -634,7 +645,7 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SubscriptionsRead200Response]:
+    ) -> ApiResponse[SubscriptionsReadResponse]:
         """Get subscription details
 
         Get subscription details
@@ -672,7 +683,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionsRead200Response",
+            '200': "SubscriptionsReadResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -739,7 +750,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SubscriptionsRead200Response",
+            '200': "SubscriptionsReadResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -816,7 +827,7 @@ class SubscriptionsApi:
     def update_subscription_status(
         self,
         context_id: StrictStr,
-        data: ServiceAction,
+        service_action: ServiceAction,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -829,15 +840,15 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ChangeQuotaCreate200Response:
-        """Update subscription status, delete, suspend, unsuspend, etc...
+    ) -> StandardResponse:
+        """Update subscription status
 
-        Update subscription status. 
+        Update subscription status, delete, suspend, unsuspend, etc...
 
         :param context_id: (required)
         :type context_id: str
-        :param data: (required)
-        :type data: ServiceAction
+        :param service_action: (required)
+        :type service_action: ServiceAction
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -862,7 +873,7 @@ class SubscriptionsApi:
 
         _param = self._update_subscription_status_serialize(
             context_id=context_id,
-            data=data,
+            service_action=service_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -870,7 +881,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -887,7 +898,7 @@ class SubscriptionsApi:
     def update_subscription_status_with_http_info(
         self,
         context_id: StrictStr,
-        data: ServiceAction,
+        service_action: ServiceAction,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -900,15 +911,15 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ChangeQuotaCreate200Response]:
-        """Update subscription status, delete, suspend, unsuspend, etc...
+    ) -> ApiResponse[StandardResponse]:
+        """Update subscription status
 
-        Update subscription status. 
+        Update subscription status, delete, suspend, unsuspend, etc...
 
         :param context_id: (required)
         :type context_id: str
-        :param data: (required)
-        :type data: ServiceAction
+        :param service_action: (required)
+        :type service_action: ServiceAction
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -933,7 +944,7 @@ class SubscriptionsApi:
 
         _param = self._update_subscription_status_serialize(
             context_id=context_id,
-            data=data,
+            service_action=service_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -941,7 +952,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -958,7 +969,7 @@ class SubscriptionsApi:
     def update_subscription_status_without_preload_content(
         self,
         context_id: StrictStr,
-        data: ServiceAction,
+        service_action: ServiceAction,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -972,14 +983,14 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update subscription status, delete, suspend, unsuspend, etc...
+        """Update subscription status
 
-        Update subscription status. 
+        Update subscription status, delete, suspend, unsuspend, etc...
 
         :param context_id: (required)
         :type context_id: str
-        :param data: (required)
-        :type data: ServiceAction
+        :param service_action: (required)
+        :type service_action: ServiceAction
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1004,7 +1015,7 @@ class SubscriptionsApi:
 
         _param = self._update_subscription_status_serialize(
             context_id=context_id,
-            data=data,
+            service_action=service_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1012,7 +1023,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1024,7 +1035,7 @@ class SubscriptionsApi:
     def _update_subscription_status_serialize(
         self,
         context_id,
-        data,
+        service_action,
         _request_auth,
         _content_type,
         _headers,
@@ -1052,8 +1063,8 @@ class SubscriptionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if service_action is not None:
+            _body_params = service_action
 
 
         # set the HTTP header `Accept`

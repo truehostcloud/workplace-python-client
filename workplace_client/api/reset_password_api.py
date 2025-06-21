@@ -17,8 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
 from workplace_client.models.password_reset import PasswordReset
+from workplace_client.models.standard_response import StandardResponse
 
 from workplace_client.api_client import ApiClient, RequestSerialized
 from workplace_client.api_response import ApiResponse
@@ -41,7 +41,7 @@ class ResetPasswordApi:
     @validate_call
     def reset_password_create(
         self,
-        data: PasswordReset,
+        password_reset: PasswordReset,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,13 +54,13 @@ class ResetPasswordApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ChangeQuotaCreate200Response:
-        """Reset subscription email password.
+    ) -> StandardResponse:
+        """Reset subscription email password
 
-        Reset subscription email password.
+        Reset subscription email password
 
-        :param data: (required)
-        :type data: PasswordReset
+        :param password_reset: (required)
+        :type password_reset: PasswordReset
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +84,7 @@ class ResetPasswordApi:
         """ # noqa: E501
 
         _param = self._reset_password_create_serialize(
-            data=data,
+            password_reset=password_reset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -92,7 +92,7 @@ class ResetPasswordApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -108,7 +108,7 @@ class ResetPasswordApi:
     @validate_call
     def reset_password_create_with_http_info(
         self,
-        data: PasswordReset,
+        password_reset: PasswordReset,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -121,13 +121,13 @@ class ResetPasswordApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ChangeQuotaCreate200Response]:
-        """Reset subscription email password.
+    ) -> ApiResponse[StandardResponse]:
+        """Reset subscription email password
 
-        Reset subscription email password.
+        Reset subscription email password
 
-        :param data: (required)
-        :type data: PasswordReset
+        :param password_reset: (required)
+        :type password_reset: PasswordReset
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -151,7 +151,7 @@ class ResetPasswordApi:
         """ # noqa: E501
 
         _param = self._reset_password_create_serialize(
-            data=data,
+            password_reset=password_reset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -159,7 +159,7 @@ class ResetPasswordApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -175,7 +175,7 @@ class ResetPasswordApi:
     @validate_call
     def reset_password_create_without_preload_content(
         self,
-        data: PasswordReset,
+        password_reset: PasswordReset,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -189,12 +189,12 @@ class ResetPasswordApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reset subscription email password.
+        """Reset subscription email password
 
-        Reset subscription email password.
+        Reset subscription email password
 
-        :param data: (required)
-        :type data: PasswordReset
+        :param password_reset: (required)
+        :type password_reset: PasswordReset
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -218,7 +218,7 @@ class ResetPasswordApi:
         """ # noqa: E501
 
         _param = self._reset_password_create_serialize(
-            data=data,
+            password_reset=password_reset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -226,7 +226,7 @@ class ResetPasswordApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -237,7 +237,7 @@ class ResetPasswordApi:
 
     def _reset_password_create_serialize(
         self,
-        data,
+        password_reset,
         _request_auth,
         _content_type,
         _headers,
@@ -263,8 +263,8 @@ class ResetPasswordApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if password_reset is not None:
+            _body_params = password_reset
 
 
         # set the HTTP header `Accept`

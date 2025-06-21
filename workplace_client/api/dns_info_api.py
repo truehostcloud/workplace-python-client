@@ -17,8 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from workplace_client.models.dns_info_create200_response import DnsInfoCreate200Response
-from workplace_client.models.dns_info_create_request import DnsInfoCreateRequest
+from workplace_client.models.dns_info_request import DnsInfoRequest
+from workplace_client.models.dns_info_response import DnsInfoResponse
 
 from workplace_client.api_client import ApiClient, RequestSerialized
 from workplace_client.api_response import ApiResponse
@@ -41,7 +41,7 @@ class DnsInfoApi:
     @validate_call
     def dns_info_create(
         self,
-        data: DnsInfoCreateRequest,
+        dns_info_request: DnsInfoRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,12 +54,13 @@ class DnsInfoApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DnsInfoCreate200Response:
-        """dns_info_create
+    ) -> DnsInfoResponse:
+        """Get DNS information
 
+        Get DNS configuration information for a domain
 
-        :param data: (required)
-        :type data: DnsInfoCreateRequest
+        :param dns_info_request: (required)
+        :type dns_info_request: DnsInfoRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -83,7 +84,7 @@ class DnsInfoApi:
         """ # noqa: E501
 
         _param = self._dns_info_create_serialize(
-            data=data,
+            dns_info_request=dns_info_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -91,7 +92,7 @@ class DnsInfoApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DnsInfoCreate200Response",
+            '200': "DnsInfoResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -107,7 +108,7 @@ class DnsInfoApi:
     @validate_call
     def dns_info_create_with_http_info(
         self,
-        data: DnsInfoCreateRequest,
+        dns_info_request: DnsInfoRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -120,12 +121,13 @@ class DnsInfoApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DnsInfoCreate200Response]:
-        """dns_info_create
+    ) -> ApiResponse[DnsInfoResponse]:
+        """Get DNS information
 
+        Get DNS configuration information for a domain
 
-        :param data: (required)
-        :type data: DnsInfoCreateRequest
+        :param dns_info_request: (required)
+        :type dns_info_request: DnsInfoRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -149,7 +151,7 @@ class DnsInfoApi:
         """ # noqa: E501
 
         _param = self._dns_info_create_serialize(
-            data=data,
+            dns_info_request=dns_info_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -157,7 +159,7 @@ class DnsInfoApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DnsInfoCreate200Response",
+            '200': "DnsInfoResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -173,7 +175,7 @@ class DnsInfoApi:
     @validate_call
     def dns_info_create_without_preload_content(
         self,
-        data: DnsInfoCreateRequest,
+        dns_info_request: DnsInfoRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -187,11 +189,12 @@ class DnsInfoApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """dns_info_create
+        """Get DNS information
 
+        Get DNS configuration information for a domain
 
-        :param data: (required)
-        :type data: DnsInfoCreateRequest
+        :param dns_info_request: (required)
+        :type dns_info_request: DnsInfoRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -215,7 +218,7 @@ class DnsInfoApi:
         """ # noqa: E501
 
         _param = self._dns_info_create_serialize(
-            data=data,
+            dns_info_request=dns_info_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -223,7 +226,7 @@ class DnsInfoApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DnsInfoCreate200Response",
+            '200': "DnsInfoResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -234,7 +237,7 @@ class DnsInfoApi:
 
     def _dns_info_create_serialize(
         self,
-        data,
+        dns_info_request,
         _request_auth,
         _content_type,
         _headers,
@@ -260,8 +263,8 @@ class DnsInfoApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if dns_info_request is not None:
+            _body_params = dns_info_request
 
 
         # set the HTTP header `Accept`

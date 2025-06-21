@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
+from workplace_client.models.standard_response import StandardResponse
 from workplace_client.models.sub_scription_info import SubScriptionInfo
 
 from workplace_client.api_client import ApiClient, RequestSerialized
@@ -41,7 +41,7 @@ class UpgradeApi:
     @validate_call
     def upgrade_create(
         self,
-        data: SubScriptionInfo,
+        sub_scription_info: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,13 +54,13 @@ class UpgradeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ChangeQuotaCreate200Response:
-        """Upgrade subscription.
+    ) -> StandardResponse:
+        """Upgrade subscription
 
-        Upgrade subscription.
+        Upgrade subscription
 
-        :param data: (required)
-        :type data: SubScriptionInfo
+        :param sub_scription_info: (required)
+        :type sub_scription_info: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +84,7 @@ class UpgradeApi:
         """ # noqa: E501
 
         _param = self._upgrade_create_serialize(
-            data=data,
+            sub_scription_info=sub_scription_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -92,7 +92,7 @@ class UpgradeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -108,7 +108,7 @@ class UpgradeApi:
     @validate_call
     def upgrade_create_with_http_info(
         self,
-        data: SubScriptionInfo,
+        sub_scription_info: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -121,13 +121,13 @@ class UpgradeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ChangeQuotaCreate200Response]:
-        """Upgrade subscription.
+    ) -> ApiResponse[StandardResponse]:
+        """Upgrade subscription
 
-        Upgrade subscription.
+        Upgrade subscription
 
-        :param data: (required)
-        :type data: SubScriptionInfo
+        :param sub_scription_info: (required)
+        :type sub_scription_info: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -151,7 +151,7 @@ class UpgradeApi:
         """ # noqa: E501
 
         _param = self._upgrade_create_serialize(
-            data=data,
+            sub_scription_info=sub_scription_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -159,7 +159,7 @@ class UpgradeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -175,7 +175,7 @@ class UpgradeApi:
     @validate_call
     def upgrade_create_without_preload_content(
         self,
-        data: SubScriptionInfo,
+        sub_scription_info: SubScriptionInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -189,12 +189,12 @@ class UpgradeApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Upgrade subscription.
+        """Upgrade subscription
 
-        Upgrade subscription.
+        Upgrade subscription
 
-        :param data: (required)
-        :type data: SubScriptionInfo
+        :param sub_scription_info: (required)
+        :type sub_scription_info: SubScriptionInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -218,7 +218,7 @@ class UpgradeApi:
         """ # noqa: E501
 
         _param = self._upgrade_create_serialize(
-            data=data,
+            sub_scription_info=sub_scription_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -226,7 +226,7 @@ class UpgradeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -237,7 +237,7 @@ class UpgradeApi:
 
     def _upgrade_create_serialize(
         self,
-        data,
+        sub_scription_info,
         _request_auth,
         _content_type,
         _headers,
@@ -263,8 +263,8 @@ class UpgradeApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if sub_scription_info is not None:
+            _body_params = sub_scription_info
 
 
         # set the HTTP header `Accept`

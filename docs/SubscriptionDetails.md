@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] [readonly] 
 **name** | **str** |  | 
-**mailbox** | **int** | Number of mailboxes. | [optional] 
-**quota** | **int** | Allowed quota number per mailbox in GB. | [optional] 
-**alias** | **int** | Allowed number of aliases per mailbox. | [optional] 
-**forward** | **int** | Allowed number of forwarding rules per mailbox. | [optional] 
+**mailbox** | **int** | Number of mailboxes | [optional] 
+**quota** | **int** | Allowed quota number per mailbox in GB | [optional] 
+**alias** | **int** | Allowed number of aliases per mailbox | [optional] 
+**forward** | **int** | Allowed number of forwarding rules per mailbox | [optional] 
 **platform** | **str** |  | [optional] 
 **price** | **decimal.Decimal** |  | [optional] 
 

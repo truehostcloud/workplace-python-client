@@ -1,993 +1,995 @@
-swagger: '2.0'
+openapi: 3.0.3
 info:
   title: Workplace Console API
   description: API for managing email and workplace service subscriptions.
   termsOfService: https://truehost.com/terms-of-service
   contact:
     email: support@truehost.cloud
-  license:
-    name: BSD License
   version: v1
-host: workplace-console.truehost.cloud
-schemes:
-- https
-basePath: /api
-consumes:
-- application/json
-produces:
-- application/json
-securityDefinitions:
-  BearerAuth:
-    type: apiKey
-    name: Authorization
-    in: header
+servers:
+  - url: https://workplace-console.truehost.cloud/api
+    description: Production server
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    # DNS Related Schemas
+    DnsRecord:
+      type: object
+      required:
+        - host
+        - type
+        - value
+        - priority
+        - ttl
+      properties:
+        host:
+          type: string
+          description: DNS record host/name
+        type:
+          type: string
+          description: DNS record type (A, MX, TXT, etc.)
+        value:
+          type: string
+          description: DNS record value
+        priority:
+          type: string
+          description: DNS record priority (may be "N/A" for non-MX records)
+        ttl:
+          type: integer
+          description: DNS record TTL in seconds
+
+    FoundDnsRecords:
+      type: object
+      description: Found DNS records organized by type
+      properties:
+        NS:
+          type: array
+          items:
+            type: string
+          description: Name server records
+        A:
+          type: array
+          items:
+            type: string
+          description: IPv4 address records
+        AAAA:
+          type: array
+          items:
+            type: string
+          description: IPv6 address records
+        CNAME:
+          type: array
+          items:
+            type: string
+          description: Canonical name records
+        MX:
+          type: array
+          items:
+            type: string
+          description: Mail exchange records
+        TXT:
+          type: array
+          items:
+            type: string
+          description: Text records
+        SOA:
+          type: array
+          items:
+            type: string
+          description: Start of authority records
+        SRV:
+          type: array
+          items:
+            type: string
+          description: Service records
+        PTR:
+          type: array
+          items:
+            type: string
+          description: Pointer records
+
+    DnsInfoRequest:
+      type: object
+      required:
+        - domain
+        - client_id
+        - email
+      properties:
+        domain:
+          type: string
+          description: Domain name
+        client_id:
+          type: string
+          description: Client id
+        email:
+          type: string
+          description: Email
+
+    DnsInfoResponse:
+      type: object
+      required:
+        - domain
+        - score
+        - all_dns_score
+        - found
+        - total
+        - missing_dns
+        - other_missing_dns
+        - found_dns
+      properties:
+        domain:
+          type: string
+          description: The domain name that was checked
+        score:
+          type: number
+          description: DNS configuration score
+        all_dns_score:
+          type: number
+          description: Overall DNS score
+        found:
+          type: integer
+          description: Number of required DNS records found
+        total:
+          type: integer
+          description: Total number of required DNS records
+        missing_dns:
+          type: array
+          description: List of missing required DNS records
+          items:
+            $ref: '#/components/schemas/DnsRecord'
+        other_missing_dns:
+          type: array
+          description: List of other missing DNS records
+          items:
+            $ref: '#/components/schemas/DnsRecord'
+        found_dns:
+          $ref: '#/components/schemas/FoundDnsRecords'
+
+    # Subscription Related Schemas
+    SubscriptionDetails:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        mailbox:
+          type: integer
+          description: Number of mailboxes
+          maximum: 2147483647
+          minimum: -2147483648
+        quota:
+          type: integer
+          description: Allowed quota number per mailbox in GB
+          maximum: 2147483647
+          minimum: -2147483648
+        alias:
+          type: integer
+          description: Allowed number of aliases per mailbox
+          maximum: 2147483647
+          minimum: -2147483648
+        forward:
+          type: integer
+          description: Allowed number of forwarding rules per mailbox
+          maximum: 2147483647
+          minimum: -2147483648
+        platform:
+          type: string
+          enum:
+            - whmcs
+            - olitt
+            - others
+        price:
+          type: string
+          format: decimal
+
+    SubScriptionInfo:
+      type: object
+      required:
+        - domain
+        - subscription
+      properties:
+        domain:
+          type: string
+          minLength: 1
+        subscription:
+          type: integer
+
+    SubscriptionInfoResponse:
+      type: object
+      required:
+        - info
+        - emails
+      properties:
+        info:
+          $ref: '#/components/schemas/OrderDisplay'
+        emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailDisplay'
+
+    SubscriptionUsageResponse:
+      type: object
+      properties:
+        used-emails:
+          type: number
+        remaining-quota:
+          type: number
+        remaining-emails:
+          type: number
+        allowed-emails:
+          type: number
+        allowed-alias:
+          type: number
+        remaining-alias:
+          type: number
+        allowed-quota:
+          type: number
+
+    SubscriptionsReadResponse:
+      type: object
+      properties:
+        domain_context:
+          type: object
+        user_emails:
+          type: array
+          items:
+            type: object
+        email_aliases:
+          type: object
+
+    # Email Related Schemas
+    EmailDisplay:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          format: email
+          maxLength: 254
+          minLength: 1
+        email_quota:
+          type: integer
+          description: Email quota in GB
+          maximum: 2147483647
+          minimum: -2147483648
+        max_quota:
+          type: integer
+          description: Max email quota in GB
+          maximum: 2147483647
+          minimum: -2147483648
+        used_quota:
+          type: integer
+          description: Used quota in GB
+          maximum: 2147483647
+          minimum: -2147483648
+        email_id:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        display_name:
+          type: string
+          maxLength: 255
+          nullable: true
+        order:
+          type: integer
+          nullable: true
+
+    ChangeEmailQuota:
+      type: object
+      required:
+        - email
+        - quota
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+        quota:
+          type: integer
+
+    DeleteEmail:
+      type: object
+      required:
+        - email
+        - domain
+        - subscription
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+        domain:
+          type: string
+          minLength: 1
+        subscription:
+          type: integer
+
+    # Alias Related Schemas
+    EmailAlias:
+      type: object
+      required:
+        - email
+        - domain
+        - alias
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+        domain:
+          type: string
+          minLength: 1
+        alias:
+          type: string
+          format: email
+          minLength: 1
+
+    DeleteAlias:
+      type: object
+      required:
+        - email
+        - alias
+        - domain
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+        alias:
+          type: string
+          format: email
+          minLength: 1
+        domain:
+          type: string
+          minLength: 1
+
+    AliasDisplay:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        primary_email:
+          type: string
+          readOnly: true
+          minLength: 1
+        name:
+          type: string
+          format: email
+          maxLength: 254
+          minLength: 1
+
+    # Domain Related Schemas
+    Domain:
+      type: object
+      required:
+        - domain
+      properties:
+        domain:
+          type: string
+          minLength: 1
+
+    DomainAction:
+      type: object
+      required:
+        - action
+        - domain
+      properties:
+        action:
+          type: string
+          minLength: 1
+        domain:
+          type: string
+          minLength: 1
+
+    OrderDisplay:
+      type: object
+      required:
+        - domain
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        context_id:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        domain:
+          type: string
+          maxLength: 255
+          minLength: 1
+        enabled:
+          type: boolean
+        synched_at:
+          type: string
+          format: date-time
+          nullable: true
+        average_size:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        filestore_id:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        filestore_name:
+          type: string
+          maxLength: 255
+          nullable: true
+        max_quota:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        context_name:
+          type: string
+          maxLength: 255
+          nullable: true
+        used_quota:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        gab_mode:
+          type: string
+          maxLength: 255
+          nullable: true
+        is_order_active:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        unallocated_quota:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        unallocated_alias:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        is_alias_calculated:
+          type: boolean
+        is_alias_synched:
+          type: boolean
+        last_dns_check:
+          type: string
+          format: date-time
+          nullable: true
+        is_dns_valid:
+          type: boolean
+        client_id:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        is_verified:
+          type: boolean
+        subscription:
+          type: integer
+          nullable: true
+
+    # Authentication Related Schemas
+    TokenObtainPair:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          minLength: 1
+        password:
+          type: string
+          minLength: 1
+
+    TokenRefresh:
+      type: object
+      required:
+        - refresh
+      properties:
+        refresh:
+          type: string
+          minLength: 1
+        access:
+          type: string
+          readOnly: true
+          minLength: 1
+
+    PasswordReset:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+        password:
+          type: string
+          minLength: 1
+
+    # Account Creation Schemas
+    OpenExchangeCreateAccount:
+      type: object
+      required:
+        - emails
+        - domain_name
+        - subscription
+        - new_subscription
+      properties:
+        emails:
+          type: array
+          items:
+            type: string
+            format: email
+            minLength: 1
+        domain_name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        subscription:
+          type: integer
+          minimum: 0
+        new_subscription:
+          type: boolean
+
+    # Import Related Schemas
+    ImportRequest:
+      type: object
+      required:
+        - file
+        - domain
+      properties:
+        file:
+          type: string
+          format: binary
+          description: CSV or excel file containing email accounts
+        domain:
+          type: string
+          description: Domain to associate with emails
+
+    # Action Related Schemas
+    ServiceAction:
+      type: object
+      required:
+        - action
+      properties:
+        action:
+          type: string
+          minLength: 1
+
+    # Common Response Schemas
+    StandardResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        error:
+          type: string
+
 security:
-- BearerAuth: []
+  - BearerAuth: []
+
 paths:
   /available-packages/:
     get:
       operationId: available-packages_list
-      summary: Get available subscriptions.
-      description: Get available subscriptions.
-      parameters: []
+      summary: Get available subscriptions
+      description: Get available subscriptions
+      tags:
+        - available-packages
       responses:
         '200':
-          description: ''
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/SubscriptionDetails'
-      tags:
-      - available-packages
-    parameters: []
+          description: List of available subscription packages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SubscriptionDetails'
+
   /change-quota/:
     post:
       operationId: change-quota_create
-      summary: Change email quota.
-      description: Change email quota.
-      parameters:
-      - name: data
-        in: body
+      summary: Change email quota
+      description: Change email quota
+      tags:
+        - change-quota
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/ChangeEmailQuota'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeEmailQuota'
       responses:
         '200':
           description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - change-quota
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'
+
   /create-alias/:
     post:
       operationId: create-alias_create
-      summary: Create email alias.
-      description: Create email alias.
-      parameters:
-      - name: data
-        in: body
+      summary: Create email alias
+      description: Create email alias
+      tags:
+        - create-alias
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/EmailAlias'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailAlias'
       responses:
         '200':
           description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - create-alias
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'
+
   /delete-alias/:
     post:
       operationId: delete-alias_create
-      summary: Delete alias.
-      description: Delete alias.
-      parameters:
-      - name: data
-        in: body
+      summary: Delete alias
+      description: Delete alias
+      tags:
+        - delete-alias
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/DeleteAlias'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteAlias'
       responses:
         '200':
           description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - delete-alias
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'
+
   /delete-email/:
     post:
       operationId: delete-email_create
-      summary: Delete email.
-      description: Delete email.
-      parameters:
-      - name: data
-        in: body
+      summary: Delete email
+      description: Delete email
+      tags:
+        - delete-email
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/DeleteEmail'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteEmail'
       responses:
         '200':
           description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - delete-email
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'
+
   /dns-info/:
     post:
       operationId: dns-info_create
-      description: ''
-      parameters:
-      - name: data
-        in: body
+      summary: Get DNS information
+      description: Get DNS configuration information for a domain
+      tags:
+        - dns-info
+      requestBody:
         required: true
-        schema:
-          required:
-          - domain
-          - client_id
-          - email
-          type: object
-          properties:
-            domain:
-              description: Domain name
-              type: string
-            client_id:
-              description: Client id
-              type: string
-            email:
-              description: Email
-              type: string
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DnsInfoRequest'
       responses:
         '200':
-          description: Success
-          schema:
-            required:
-            - score
-            - message
-            - domain
-            - all_dns_score
-            - found
-            - total
-            - missing_dns
-            - other_missing_dns
-            - found_dns
-            - error
-            type: object
-            properties:
-              score:
-                type: number
-              message:
-                type: string
-              domain:
-                type: string
-              all_dns_score:
-                type: number
-              found:
-                type: number
-              total:
-                type: number
-              missing_dns:
-                type: array
-                items:
-                  required:
-                  - host
-                  - type
-                  - value
-                  - priority
-                  - ttl
-                  type: object
-                  properties:
-                    host:
-                      type: string
-                    type:
-                      type: string
-                    value:
-                      type: string
-                    priority:
-                      type: string
-                    ttl:
-                      type: integer
-              other_missing_dns:
-                type: array
-                items:
-                  required:
-                  - host
-                  - type
-                  - value
-                  - priority
-                  - ttl
-                  type: object
-                  properties:
-                    host:
-                      type: string
-                    type:
-                      type: string
-                    value:
-                      type: string
-                    priority:
-                      type: string
-                    ttl:
-                      type: integer
-              found_dns:
-                type: object
-                additionalProperties:
-                  type: array
-                  items:
-                    type: string
-              error:
-                type: array
-                items:
-                  type: string
-      tags:
-      - dns-info
-    parameters: []
+          description: DNS information response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DnsInfoResponse'
+
   /domain-alias/:
     post:
       operationId: domain-alias_create
-      summary: Get domain alias list.
-      description: Get domain alias list.
-      parameters:
-      - name: data
-        in: body
+      summary: Get domain alias list
+      description: Get domain alias list
+      tags:
+        - domain-alias
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/Domain'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Domain'
       responses:
         '200':
-          description: ''
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/AliasDisplay'
-      tags:
-      - domain-alias
-    parameters: []
+          description: List of domain aliases
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AliasDisplay'
+
   /domain-info/:
     post:
       operationId: domain-info_create
-      summary: Get domain subscription details.
-      description: Get domain subscription details and emails list.
-      parameters:
-      - name: data
-        in: body
+      summary: Get domain subscription details
+      description: Get domain subscription details and emails list
+      tags:
+        - domain-info
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/SubScriptionInfo'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubScriptionInfo'
       responses:
         '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/SubscriptionInfoResponse'
-      tags:
-      - domain-info
-    parameters: []
+          description: Domain subscription information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionInfoResponse'
+
   /domain/:
     post:
       operationId: domain_create
-      summary: Update domain subscription status, delete, suspend, unsuspend, etc...
-      description: 'Update domain subscription status. '
-      parameters:
-      - name: data
-        in: body
+      summary: Update domain subscription status
+      description: Update domain subscription status, delete, suspend, unsuspend, etc...
+      tags:
+        - domain
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/DomainAction'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DomainAction'
       responses:
         '200':
           description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - domain
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'
+
   /get-token/:
     post:
       operationId: get-token_create
+      summary: Obtain authentication token
       description: |-
         Takes a set of user credentials and returns an access and refresh JSON web
         token pair to prove the authentication of those credentials.
-      parameters:
-      - name: data
-        in: body
+      tags:
+        - get-token
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/TokenObtainPair'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
       responses:
         '201':
-          description: ''
-          schema:
-            $ref: '#/definitions/TokenObtainPair'
-      tags:
-      - get-token
-    parameters: []
+          description: Token pair created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+
   /import/:
     post:
       operationId: import_create
-      summary: Bulk create emails.
-      description: Bulk create emails via uploaded file and domain.
-      parameters:
-      - name: data
-        in: body
+      summary: Bulk create emails
+      description: Bulk create emails via uploaded file and domain
+      tags:
+        - import
+      requestBody:
         required: true
-        schema:
-          required:
-          - file
-          - domain
-          type: object
-          properties:
-            file:
-              description: CSV or excel file containing email accounts
-              type: string
-              format: binary
-            domain:
-              description: Domain to associate with emails
-              type: string
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ImportRequest'
       responses:
         '200':
           description: Success
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - import
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'
+
   /refresh-token/:
     post:
       operationId: refresh-token_create
+      summary: Refresh authentication token
       description: |-
         Takes a refresh type JSON web token and returns an access type JSON web
         token if the refresh token is valid.
-      parameters:
-      - name: data
-        in: body
+      tags:
+        - refresh-token
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/TokenRefresh'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
       responses:
         '201':
-          description: ''
-          schema:
-            $ref: '#/definitions/TokenRefresh'
-      tags:
-      - refresh-token
-    parameters: []
+          description: Token refreshed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+
   /reset-password/:
     post:
       operationId: reset-password_create
-      summary: Reset subscription email password.
-      description: Reset subscription email password.
-      parameters:
-      - name: data
-        in: body
+      summary: Reset subscription email password
+      description: Reset subscription email password
+      tags:
+        - reset-password
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/PasswordReset'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
       responses:
         '200':
           description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - reset-password
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'
+
   /subscription-info/:
     post:
       operationId: subscription-info_create
-      summary: Get subscription usage info.
-      description: Get subscription usage info.
-      parameters:
-      - name: data
-        in: body
+      summary: Get subscription usage info
+      description: Get subscription usage info
+      tags:
+        - subscription-info
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/SubScriptionInfo'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubScriptionInfo'
       responses:
         '200':
-          description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              used-emails:
-                type: number
-              remaining-quota:
-                type: number
-              remaining-emails:
-                type: number
-              allowed-emails:
-                type: number
-              allowed-alias:
-                type: number
-              remaining-alias:
-                type: number
-              allowed-quota:
-                type: number
-      tags:
-      - subscription-info
-    parameters: []
+          description: Subscription usage information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionUsageResponse'
+
   /subscriptions/:
     get:
       operationId: subscriptions_list
-      description: ''
-      parameters: []
+      summary: List subscriptions
+      description: Get list of subscriptions
+      tags:
+        - subscriptions
       responses:
         '200':
-          description: ''
-      tags:
-      - subscriptions
+          description: List of subscriptions
+          content:
+            application/json:
+              schema:
+                type: object
+
     post:
       operationId: subscriptions_create
-      summary: Create a new email subscription, it will create a new subscription
+      summary: Create a new email subscription
+      description: |-
+        Create a new email subscription, it will create a new subscription
         for the domain if emails list is not empty
-      description: Create a new email subscription
-      parameters:
-      - name: data
-        in: body
+      tags:
+        - subscriptions
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/OpenExchangeCreateAccount'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpenExchangeCreateAccount'
       responses:
         '200':
           description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - subscriptions
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'
+
   /subscriptions/{context_id}/:
     get:
       operationId: subscriptions_read
       summary: Get subscription details
       description: Get subscription details
-      parameters: []
+      tags:
+        - subscriptions
+      parameters:
+        - name: context_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
-          description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              domain_context:
-                type: object
-              user_emails:
-                type: array
-                items:
-                  type: object
-              email_aliases:
-                type: object
-      tags:
-      - subscriptions
+          description: Subscription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionsReadResponse'
+
     post:
       operationId: update_subscription_status
-      summary: Update subscription status, delete, suspend, unsuspend, etc...
-      description: 'Update subscription status. '
+      summary: Update subscription status
+      description: Update subscription status, delete, suspend, unsuspend, etc...
+      tags:
+        - subscriptions
       parameters:
-      - name: data
-        in: body
+        - name: context_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/ServiceAction'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceAction'
       responses:
         '200':
           description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - subscriptions
-    parameters:
-    - name: context_id
-      in: path
-      required: true
-      type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'
+
   /upgrade/:
     post:
       operationId: upgrade_create
-      summary: Upgrade subscription.
-      description: Upgrade subscription.
-      parameters:
-      - name: data
-        in: body
+      summary: Upgrade subscription
+      description: Upgrade subscription
+      tags:
+        - upgrade
+      requestBody:
         required: true
-        schema:
-          $ref: '#/definitions/SubScriptionInfo'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubScriptionInfo'
       responses:
         '200':
           description: Success
-          schema:
-            required: []
-            type: object
-            properties:
-              message:
-                type: string
-              error:
-                type: string
-      tags:
-      - upgrade
-    parameters: []
-definitions:
-  SubscriptionDetails:
-    required:
-    - name
-    type: object
-    properties:
-      id:
-        title: ID
-        type: integer
-        readOnly: true
-      name:
-        title: Name
-        type: string
-        maxLength: 255
-        minLength: 1
-      mailbox:
-        title: Mailbox
-        description: Number of mailboxes.
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      quota:
-        title: Quota
-        description: Allowed quota number per mailbox in GB.
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      alias:
-        title: Alias
-        description: Allowed number of aliases per mailbox.
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      forward:
-        title: Forward
-        description: Allowed number of forwarding rules per mailbox.
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      platform:
-        title: Platform
-        type: string
-        enum:
-        - whmcs
-        - olitt
-        - others
-      price:
-        title: Price
-        type: string
-        format: decimal
-  ChangeEmailQuota:
-    required:
-    - email
-    - quota
-    type: object
-    properties:
-      email:
-        title: Email
-        type: string
-        format: email
-        minLength: 1
-      quota:
-        title: Quota
-        type: integer
-  EmailAlias:
-    required:
-    - email
-    - domain
-    - alias
-    type: object
-    properties:
-      email:
-        title: Email
-        type: string
-        format: email
-        minLength: 1
-      domain:
-        title: Domain
-        type: string
-        minLength: 1
-      alias:
-        title: Alias
-        type: string
-        format: email
-        minLength: 1
-  DeleteAlias:
-    required:
-    - email
-    - alias
-    - domain
-    type: object
-    properties:
-      email:
-        title: Email
-        type: string
-        format: email
-        minLength: 1
-      alias:
-        title: Alias
-        type: string
-        format: email
-        minLength: 1
-      domain:
-        title: Domain
-        type: string
-        minLength: 1
-  DeleteEmail:
-    required:
-    - email
-    - domain
-    - subscription
-    type: object
-    properties:
-      email:
-        title: Email
-        type: string
-        format: email
-        minLength: 1
-      domain:
-        title: Domain
-        type: string
-        minLength: 1
-      subscription:
-        title: Subscription
-        type: integer
-  Domain:
-    required:
-    - domain
-    type: object
-    properties:
-      domain:
-        title: Domain
-        type: string
-        minLength: 1
-  AliasDisplay:
-    required:
-    - name
-    type: object
-    properties:
-      id:
-        title: ID
-        type: integer
-        readOnly: true
-      primary_email:
-        title: Primary email
-        type: string
-        readOnly: true
-        minLength: 1
-      name:
-        title: Name
-        type: string
-        format: email
-        maxLength: 254
-        minLength: 1
-  SubScriptionInfo:
-    required:
-    - domain
-    - subscription
-    type: object
-    properties:
-      domain:
-        title: Domain
-        type: string
-        minLength: 1
-      subscription:
-        title: Subscription
-        type: integer
-  OrderDisplay:
-    required:
-    - domain
-    type: object
-    properties:
-      id:
-        title: ID
-        type: integer
-        readOnly: true
-      context_id:
-        title: Context id
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-        x-nullable: true
-      domain:
-        title: Domain
-        type: string
-        maxLength: 255
-        minLength: 1
-      enabled:
-        title: Enabled
-        type: boolean
-      synched_at:
-        title: Synched at
-        type: string
-        format: date-time
-        x-nullable: true
-      average_size:
-        title: Average size
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      filestore_id:
-        title: Filestore id
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      filestore_name:
-        title: Filestore name
-        type: string
-        maxLength: 255
-        x-nullable: true
-      max_quota:
-        title: Max quota
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      context_name:
-        title: Context name
-        type: string
-        maxLength: 255
-        x-nullable: true
-      used_quota:
-        title: Used quota
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      gab_mode:
-        title: Gab mode
-        type: string
-        maxLength: 255
-        x-nullable: true
-      is_order_active:
-        title: Is order active
-        type: boolean
-      updated_at:
-        title: Updated at
-        type: string
-        format: date-time
-        readOnly: true
-      created_at:
-        title: Created at
-        type: string
-        format: date-time
-        readOnly: true
-      unallocated_quota:
-        title: Unallocated quota
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      unallocated_alias:
-        title: Unallocated alias
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      is_alias_calculated:
-        title: Is alias calculated
-        type: boolean
-      is_alias_synched:
-        title: Is alias synched
-        type: boolean
-      last_dns_check:
-        title: Last dns check
-        type: string
-        format: date-time
-        x-nullable: true
-      is_dns_valid:
-        title: Is dns valid
-        type: boolean
-      client_id:
-        title: Client id
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-        x-nullable: true
-      is_verified:
-        title: Is verified
-        type: boolean
-      subscription:
-        title: Subscription
-        type: integer
-        x-nullable: true
-  EmailDisplay:
-    required:
-    - name
-    type: object
-    properties:
-      id:
-        title: ID
-        type: integer
-        readOnly: true
-      name:
-        title: Name
-        type: string
-        format: email
-        maxLength: 254
-        minLength: 1
-      email_quota:
-        title: Email quota
-        description: Email qoata in GB
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      max_quota:
-        title: Max quota
-        description: Max email qoata in GB
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      used_quota:
-        title: Used quota
-        description: Used qoata in GB
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-      email_id:
-        title: Email id
-        type: integer
-        maximum: 2147483647
-        minimum: -2147483648
-        x-nullable: true
-      display_name:
-        title: Display name
-        type: string
-        maxLength: 255
-        x-nullable: true
-      order:
-        title: Order
-        type: integer
-        x-nullable: true
-  SubscriptionInfoResponse:
-    required:
-    - info
-    - emails
-    type: object
-    properties:
-      info:
-        $ref: '#/definitions/OrderDisplay'
-      emails:
-        type: array
-        items:
-          $ref: '#/definitions/EmailDisplay'
-  DomainAction:
-    required:
-    - action
-    - domain
-    type: object
-    properties:
-      action:
-        title: Action
-        type: string
-        minLength: 1
-      domain:
-        title: Domain
-        type: string
-        minLength: 1
-  TokenObtainPair:
-    required:
-    - username
-    - password
-    type: object
-    properties:
-      username:
-        title: Username
-        type: string
-        minLength: 1
-      password:
-        title: Password
-        type: string
-        minLength: 1
-  TokenRefresh:
-    required:
-    - refresh
-    type: object
-    properties:
-      refresh:
-        title: Refresh
-        type: string
-        minLength: 1
-      access:
-        title: Access
-        type: string
-        readOnly: true
-        minLength: 1
-  PasswordReset:
-    required:
-    - email
-    - password
-    type: object
-    properties:
-      email:
-        title: Email
-        type: string
-        format: email
-        minLength: 1
-      password:
-        title: Password
-        type: string
-        minLength: 1
-  OpenExchangeCreateAccount:
-    required:
-    - emails
-    - domain_name
-    - subscription
-    - new_subscription
-    type: object
-    properties:
-      emails:
-        type: array
-        items:
-          type: string
-          format: email
-          minLength: 1
-      domain_name:
-        title: Domain name
-        type: string
-        maxLength: 255
-        minLength: 1
-      subscription:
-        title: Subscription
-        type: integer
-        minimum: 0
-      new_subscription:
-        title: New subscription
-        type: boolean
-  ServiceAction:
-    required:
-    - action
-    type: object
-    properties:
-      action:
-        title: Action
-        type: string
-        minLength: 1
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardResponse'

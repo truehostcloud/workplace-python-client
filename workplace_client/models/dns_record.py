@@ -18,35 +18,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SubscriptionDetails(BaseModel):
+class DnsRecord(BaseModel):
     """
-    SubscriptionDetails
+    DnsRecord
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
-    mailbox: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Number of mailboxes")
-    quota: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Allowed quota number per mailbox in GB")
-    alias: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Allowed number of aliases per mailbox")
-    forward: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Allowed number of forwarding rules per mailbox")
-    platform: Optional[StrictStr] = None
-    price: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "mailbox", "quota", "alias", "forward", "platform", "price"]
-
-    @field_validator('platform')
-    def platform_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['whmcs', 'olitt', 'others']):
-            raise ValueError("must be one of enum values ('whmcs', 'olitt', 'others')")
-        return value
+    host: StrictStr = Field(description="DNS record host/name")
+    type: StrictStr = Field(description="DNS record type (A, MX, TXT, etc.)")
+    value: StrictStr = Field(description="DNS record value")
+    priority: StrictStr = Field(description="DNS record priority (may be \"N/A\" for non-MX records)")
+    ttl: StrictInt = Field(description="DNS record TTL in seconds")
+    __properties: ClassVar[List[str]] = ["host", "type", "value", "priority", "ttl"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -66,7 +52,7 @@ class SubscriptionDetails(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SubscriptionDetails from a JSON string"""
+        """Create an instance of DnsRecord from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,10 +64,8 @@ class SubscriptionDetails(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "id",
         ])
 
         _dict = self.model_dump(
@@ -93,7 +77,7 @@ class SubscriptionDetails(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SubscriptionDetails from a dict"""
+        """Create an instance of DnsRecord from a dict"""
         if obj is None:
             return None
 
@@ -101,14 +85,11 @@ class SubscriptionDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "mailbox": obj.get("mailbox"),
-            "quota": obj.get("quota"),
-            "alias": obj.get("alias"),
-            "forward": obj.get("forward"),
-            "platform": obj.get("platform"),
-            "price": obj.get("price")
+            "host": obj.get("host"),
+            "type": obj.get("type"),
+            "value": obj.get("value"),
+            "priority": obj.get("priority"),
+            "ttl": obj.get("ttl")
         })
         return _obj
 

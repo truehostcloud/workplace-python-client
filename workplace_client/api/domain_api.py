@@ -17,8 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
 from workplace_client.models.domain_action import DomainAction
+from workplace_client.models.standard_response import StandardResponse
 
 from workplace_client.api_client import ApiClient, RequestSerialized
 from workplace_client.api_response import ApiResponse
@@ -41,7 +41,7 @@ class DomainApi:
     @validate_call
     def domain_create(
         self,
-        data: DomainAction,
+        domain_action: DomainAction,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,13 +54,13 @@ class DomainApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ChangeQuotaCreate200Response:
-        """Update domain subscription status, delete, suspend, unsuspend, etc...
+    ) -> StandardResponse:
+        """Update domain subscription status
 
-        Update domain subscription status. 
+        Update domain subscription status, delete, suspend, unsuspend, etc...
 
-        :param data: (required)
-        :type data: DomainAction
+        :param domain_action: (required)
+        :type domain_action: DomainAction
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +84,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_create_serialize(
-            data=data,
+            domain_action=domain_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -92,7 +92,7 @@ class DomainApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -108,7 +108,7 @@ class DomainApi:
     @validate_call
     def domain_create_with_http_info(
         self,
-        data: DomainAction,
+        domain_action: DomainAction,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -121,13 +121,13 @@ class DomainApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ChangeQuotaCreate200Response]:
-        """Update domain subscription status, delete, suspend, unsuspend, etc...
+    ) -> ApiResponse[StandardResponse]:
+        """Update domain subscription status
 
-        Update domain subscription status. 
+        Update domain subscription status, delete, suspend, unsuspend, etc...
 
-        :param data: (required)
-        :type data: DomainAction
+        :param domain_action: (required)
+        :type domain_action: DomainAction
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -151,7 +151,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_create_serialize(
-            data=data,
+            domain_action=domain_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -159,7 +159,7 @@ class DomainApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -175,7 +175,7 @@ class DomainApi:
     @validate_call
     def domain_create_without_preload_content(
         self,
-        data: DomainAction,
+        domain_action: DomainAction,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -189,12 +189,12 @@ class DomainApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update domain subscription status, delete, suspend, unsuspend, etc...
+        """Update domain subscription status
 
-        Update domain subscription status. 
+        Update domain subscription status, delete, suspend, unsuspend, etc...
 
-        :param data: (required)
-        :type data: DomainAction
+        :param domain_action: (required)
+        :type domain_action: DomainAction
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -218,7 +218,7 @@ class DomainApi:
         """ # noqa: E501
 
         _param = self._domain_create_serialize(
-            data=data,
+            domain_action=domain_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -226,7 +226,7 @@ class DomainApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ChangeQuotaCreate200Response",
+            '200': "StandardResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -237,7 +237,7 @@ class DomainApi:
 
     def _domain_create_serialize(
         self,
-        data,
+        domain_action,
         _request_auth,
         _content_type,
         _headers,
@@ -263,8 +263,8 @@ class DomainApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if domain_action is not None:
+            _body_params = domain_action
 
 
         # set the HTTP header `Accept`

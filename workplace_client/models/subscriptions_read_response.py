@@ -18,35 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SubscriptionDetails(BaseModel):
+class SubscriptionsReadResponse(BaseModel):
     """
-    SubscriptionDetails
+    SubscriptionsReadResponse
     """ # noqa: E501
-    id: Optional[StrictInt] = None
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
-    mailbox: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Number of mailboxes")
-    quota: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Allowed quota number per mailbox in GB")
-    alias: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Allowed number of aliases per mailbox")
-    forward: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Allowed number of forwarding rules per mailbox")
-    platform: Optional[StrictStr] = None
-    price: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "mailbox", "quota", "alias", "forward", "platform", "price"]
-
-    @field_validator('platform')
-    def platform_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['whmcs', 'olitt', 'others']):
-            raise ValueError("must be one of enum values ('whmcs', 'olitt', 'others')")
-        return value
+    domain_context: Optional[Dict[str, Any]] = None
+    user_emails: Optional[List[Dict[str, Any]]] = None
+    email_aliases: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["domain_context", "user_emails", "email_aliases"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -66,7 +50,7 @@ class SubscriptionDetails(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SubscriptionDetails from a JSON string"""
+        """Create an instance of SubscriptionsReadResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,10 +62,8 @@ class SubscriptionDetails(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "id",
         ])
 
         _dict = self.model_dump(
@@ -93,7 +75,7 @@ class SubscriptionDetails(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SubscriptionDetails from a dict"""
+        """Create an instance of SubscriptionsReadResponse from a dict"""
         if obj is None:
             return None
 
@@ -101,14 +83,9 @@ class SubscriptionDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "mailbox": obj.get("mailbox"),
-            "quota": obj.get("quota"),
-            "alias": obj.get("alias"),
-            "forward": obj.get("forward"),
-            "platform": obj.get("platform"),
-            "price": obj.get("price")
+            "domain_context": obj.get("domain_context"),
+            "user_emails": obj.get("user_emails"),
+            "email_aliases": obj.get("email_aliases")
         })
         return _obj
 

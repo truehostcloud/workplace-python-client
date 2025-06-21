@@ -4,19 +4,19 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**domain_info_create**](DomainInfoApi.md#domain_info_create) | **POST** /domain-info/ | Get domain subscription details.
+[**domain_info_create**](DomainInfoApi.md#domain_info_create) | **POST** /domain-info/ | Get domain subscription details
 
 
 # **domain_info_create**
-> SubscriptionInfoResponse domain_info_create(data)
+> SubscriptionInfoResponse domain_info_create(sub_scription_info)
 
-Get domain subscription details.
+Get domain subscription details
 
-Get domain subscription details and emails list.
+Get domain subscription details and emails list
 
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
@@ -36,21 +36,20 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.DomainInfoApi(api_client)
-    data = workplace_client.SubScriptionInfo() # SubScriptionInfo | 
+    sub_scription_info = workplace_client.SubScriptionInfo() # SubScriptionInfo | 
 
     try:
-        # Get domain subscription details.
-        api_response = api_instance.domain_info_create(data)
+        # Get domain subscription details
+        api_response = api_instance.domain_info_create(sub_scription_info)
         print("The response of DomainInfoApi->domain_info_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,7 +63,7 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**SubScriptionInfo**](SubScriptionInfo.md)|  | 
+ **sub_scription_info** | [**SubScriptionInfo**](SubScriptionInfo.md)|  | 
 
 ### Return type
 
@@ -83,7 +82,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
+**200** | Domain subscription information |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

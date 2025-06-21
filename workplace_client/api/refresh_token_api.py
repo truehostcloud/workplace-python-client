@@ -40,7 +40,7 @@ class RefreshTokenApi:
     @validate_call
     def refresh_token_create(
         self,
-        data: TokenRefresh,
+        token_refresh: TokenRefresh,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,12 +54,12 @@ class RefreshTokenApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TokenRefresh:
-        """refresh_token_create
+        """Refresh authentication token
 
         Takes a refresh type JSON web token and returns an access type JSON web token if the refresh token is valid.
 
-        :param data: (required)
-        :type data: TokenRefresh
+        :param token_refresh: (required)
+        :type token_refresh: TokenRefresh
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -83,7 +83,7 @@ class RefreshTokenApi:
         """ # noqa: E501
 
         _param = self._refresh_token_create_serialize(
-            data=data,
+            token_refresh=token_refresh,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -107,7 +107,7 @@ class RefreshTokenApi:
     @validate_call
     def refresh_token_create_with_http_info(
         self,
-        data: TokenRefresh,
+        token_refresh: TokenRefresh,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -121,12 +121,12 @@ class RefreshTokenApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TokenRefresh]:
-        """refresh_token_create
+        """Refresh authentication token
 
         Takes a refresh type JSON web token and returns an access type JSON web token if the refresh token is valid.
 
-        :param data: (required)
-        :type data: TokenRefresh
+        :param token_refresh: (required)
+        :type token_refresh: TokenRefresh
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -150,7 +150,7 @@ class RefreshTokenApi:
         """ # noqa: E501
 
         _param = self._refresh_token_create_serialize(
-            data=data,
+            token_refresh=token_refresh,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -174,7 +174,7 @@ class RefreshTokenApi:
     @validate_call
     def refresh_token_create_without_preload_content(
         self,
-        data: TokenRefresh,
+        token_refresh: TokenRefresh,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -188,12 +188,12 @@ class RefreshTokenApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """refresh_token_create
+        """Refresh authentication token
 
         Takes a refresh type JSON web token and returns an access type JSON web token if the refresh token is valid.
 
-        :param data: (required)
-        :type data: TokenRefresh
+        :param token_refresh: (required)
+        :type token_refresh: TokenRefresh
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -217,7 +217,7 @@ class RefreshTokenApi:
         """ # noqa: E501
 
         _param = self._refresh_token_create_serialize(
-            data=data,
+            token_refresh=token_refresh,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -236,7 +236,7 @@ class RefreshTokenApi:
 
     def _refresh_token_create_serialize(
         self,
-        data,
+        token_refresh,
         _request_auth,
         _content_type,
         _headers,
@@ -262,8 +262,8 @@ class RefreshTokenApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if token_refresh is not None:
+            _body_params = token_refresh
 
 
         # set the HTTP header `Accept`

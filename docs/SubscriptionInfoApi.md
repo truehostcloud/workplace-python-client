@@ -4,24 +4,24 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**subscription_info_create**](SubscriptionInfoApi.md#subscription_info_create) | **POST** /subscription-info/ | Get subscription usage info.
+[**subscription_info_create**](SubscriptionInfoApi.md#subscription_info_create) | **POST** /subscription-info/ | Get subscription usage info
 
 
 # **subscription_info_create**
-> SubscriptionInfoCreate200Response subscription_info_create(data)
+> SubscriptionUsageResponse subscription_info_create(sub_scription_info)
 
-Get subscription usage info.
+Get subscription usage info
 
-Get subscription usage info.
+Get subscription usage info
 
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
 from workplace_client.models.sub_scription_info import SubScriptionInfo
-from workplace_client.models.subscription_info_create200_response import SubscriptionInfoCreate200Response
+from workplace_client.models.subscription_usage_response import SubscriptionUsageResponse
 from workplace_client.rest import ApiException
 from pprint import pprint
 
@@ -36,21 +36,20 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.SubscriptionInfoApi(api_client)
-    data = workplace_client.SubScriptionInfo() # SubScriptionInfo | 
+    sub_scription_info = workplace_client.SubScriptionInfo() # SubScriptionInfo | 
 
     try:
-        # Get subscription usage info.
-        api_response = api_instance.subscription_info_create(data)
+        # Get subscription usage info
+        api_response = api_instance.subscription_info_create(sub_scription_info)
         print("The response of SubscriptionInfoApi->subscription_info_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,11 +63,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**SubScriptionInfo**](SubScriptionInfo.md)|  | 
+ **sub_scription_info** | [**SubScriptionInfo**](SubScriptionInfo.md)|  | 
 
 ### Return type
 
-[**SubscriptionInfoCreate200Response**](SubscriptionInfoCreate200Response.md)
+[**SubscriptionUsageResponse**](SubscriptionUsageResponse.md)
 
 ### Authorization
 
@@ -83,7 +82,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | Subscription usage information |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

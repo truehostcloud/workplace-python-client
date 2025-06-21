@@ -42,7 +42,7 @@ class DomainAliasApi:
     @validate_call
     def domain_alias_create(
         self,
-        data: Domain,
+        domain: Domain,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -56,12 +56,12 @@ class DomainAliasApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AliasDisplay]:
-        """Get domain alias list.
+        """Get domain alias list
 
-        Get domain alias list.
+        Get domain alias list
 
-        :param data: (required)
-        :type data: Domain
+        :param domain: (required)
+        :type domain: Domain
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -85,7 +85,7 @@ class DomainAliasApi:
         """ # noqa: E501
 
         _param = self._domain_alias_create_serialize(
-            data=data,
+            domain=domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109,7 +109,7 @@ class DomainAliasApi:
     @validate_call
     def domain_alias_create_with_http_info(
         self,
-        data: Domain,
+        domain: Domain,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -123,12 +123,12 @@ class DomainAliasApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AliasDisplay]]:
-        """Get domain alias list.
+        """Get domain alias list
 
-        Get domain alias list.
+        Get domain alias list
 
-        :param data: (required)
-        :type data: Domain
+        :param domain: (required)
+        :type domain: Domain
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -152,7 +152,7 @@ class DomainAliasApi:
         """ # noqa: E501
 
         _param = self._domain_alias_create_serialize(
-            data=data,
+            domain=domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -176,7 +176,7 @@ class DomainAliasApi:
     @validate_call
     def domain_alias_create_without_preload_content(
         self,
-        data: Domain,
+        domain: Domain,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -190,12 +190,12 @@ class DomainAliasApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get domain alias list.
+        """Get domain alias list
 
-        Get domain alias list.
+        Get domain alias list
 
-        :param data: (required)
-        :type data: Domain
+        :param domain: (required)
+        :type domain: Domain
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -219,7 +219,7 @@ class DomainAliasApi:
         """ # noqa: E501
 
         _param = self._domain_alias_create_serialize(
-            data=data,
+            domain=domain,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,7 +238,7 @@ class DomainAliasApi:
 
     def _domain_alias_create_serialize(
         self,
-        data,
+        domain,
         _request_auth,
         _content_type,
         _headers,
@@ -264,8 +264,8 @@ class DomainAliasApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if data is not None:
-            _body_params = data
+        if domain is not None:
+            _body_params = domain
 
 
         # set the HTTP header `Accept`

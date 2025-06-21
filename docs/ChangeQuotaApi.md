@@ -4,24 +4,24 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**change_quota_create**](ChangeQuotaApi.md#change_quota_create) | **POST** /change-quota/ | Change email quota.
+[**change_quota_create**](ChangeQuotaApi.md#change_quota_create) | **POST** /change-quota/ | Change email quota
 
 
 # **change_quota_create**
-> ChangeQuotaCreate200Response change_quota_create(data)
+> StandardResponse change_quota_create(change_email_quota)
 
-Change email quota.
+Change email quota
 
-Change email quota.
+Change email quota
 
 ### Example
 
-* Api Key Authentication (BearerAuth):
+* Bearer (JWT) Authentication (BearerAuth):
 
 ```python
 import workplace_client
 from workplace_client.models.change_email_quota import ChangeEmailQuota
-from workplace_client.models.change_quota_create200_response import ChangeQuotaCreate200Response
+from workplace_client.models.standard_response import StandardResponse
 from workplace_client.rest import ApiException
 from pprint import pprint
 
@@ -36,21 +36,20 @@ configuration = workplace_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: BearerAuth
-configuration.api_key['BearerAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['BearerAuth'] = 'Bearer'
+# Configure Bearer authorization (JWT): BearerAuth
+configuration = workplace_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.ChangeQuotaApi(api_client)
-    data = workplace_client.ChangeEmailQuota() # ChangeEmailQuota | 
+    change_email_quota = workplace_client.ChangeEmailQuota() # ChangeEmailQuota | 
 
     try:
-        # Change email quota.
-        api_response = api_instance.change_quota_create(data)
+        # Change email quota
+        api_response = api_instance.change_quota_create(change_email_quota)
         print("The response of ChangeQuotaApi->change_quota_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,11 +63,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**ChangeEmailQuota**](ChangeEmailQuota.md)|  | 
+ **change_email_quota** | [**ChangeEmailQuota**](ChangeEmailQuota.md)|  | 
 
 ### Return type
 
-[**ChangeQuotaCreate200Response**](ChangeQuotaCreate200Response.md)
+[**StandardResponse**](StandardResponse.md)
 
 ### Authorization
 

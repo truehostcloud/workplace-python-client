@@ -32,7 +32,10 @@ class OpenExchangeCreateAccount(BaseModel):
     domain_name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
     subscription: Annotated[int, Field(strict=True, ge=0)]
     new_subscription: StrictBool
-    __properties: ClassVar[List[str]] = ["emails", "domain_name", "subscription", "new_subscription"]
+    display_name: Annotated[str, Field(min_length=1, strict=True)]
+    user_password: Annotated[str, Field(min_length=1, strict=True)]
+    email_quota: Annotated[int, Field(strict=True, ge=0)]
+    __properties: ClassVar[List[str]] = ["emails", "domain_name", "subscription", "new_subscription", "display_name", "user_password", "email_quota"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,7 +91,10 @@ class OpenExchangeCreateAccount(BaseModel):
             "emails": obj.get("emails"),
             "domain_name": obj.get("domain_name"),
             "subscription": obj.get("subscription"),
-            "new_subscription": obj.get("new_subscription")
+            "new_subscription": obj.get("new_subscription"),
+            "display_name": obj.get("display_name"),
+            "user_password": obj.get("user_password"),
+            "email_quota": obj.get("email_quota")
         })
         return _obj
 

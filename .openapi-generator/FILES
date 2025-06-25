@@ -50,13 +50,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_dns_info_request.py
-test/test_dns_info_response.py
-test/test_dns_record.py
-test/test_found_dns_records.py
-test/test_standard_response.py
-test/test_subscription_usage_response.py
-test/test_subscriptions_read_response.py
 tox.ini
 workplace_client/__init__.py
 workplace_client/api/__init__.py

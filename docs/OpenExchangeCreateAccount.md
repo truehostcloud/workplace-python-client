@@ -9,6 +9,9 @@ Name | Type | Description | Notes
 **domain_name** | **str** |  | 
 **subscription** | **int** |  | 
 **new_subscription** | **bool** |  | 
+**display_name** | **str** |  | 
+**user_password** | **str** |  | 
+**email_quota** | **int** |  | 
 
 ## Example
 

@@ -538,6 +538,10 @@ components:
         - domain_name
         - subscription
         - new_subscription
+        - display_name
+        - user_password
+        - email_quota
+        
       properties:
         emails:
           type: array
@@ -554,6 +558,15 @@ components:
           minimum: 0
         new_subscription:
           type: boolean
+        display_name:
+          type: string
+          minLength: 1
+        user_password:
+          type: string
+          minLength: 1
+        email_quota:
+          type: integer
+          minimum: 0
 
     # Import Related Schemas
     ImportRequest:

@@ -540,7 +540,7 @@ components:
         - new_subscription
         - display_name
         - user_password
-        - email_quota_gb
+        - email_quota
         - client_id
         
       properties:
@@ -565,10 +565,9 @@ components:
         user_password:
           type: string
           minLength: 1
-        email_quota_gb:
+        email_quota:
           type: integer
           minimum: 0
-          x-serialized-name: email_quota
         client_id:
           type: integer
           minimum: 0

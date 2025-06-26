@@ -34,9 +34,9 @@ class WorkplaceCreateEmails(BaseModel):
     new_subscription: StrictBool
     display_name: Annotated[str, Field(min_length=1, strict=True)]
     user_password: Annotated[str, Field(min_length=1, strict=True)]
-    email_quota_gb: Annotated[int, Field(strict=True, ge=0)]
+    email_quota_gb: Annotated[int, Field(strict=True, ge=0)] = Field(alias="email_quota")
     client_id: Annotated[int, Field(strict=True, ge=0)]
-    __properties: ClassVar[List[str]] = ["emails", "domain_name", "subscription", "new_subscription", "display_name", "user_password", "email_quota_gb", "client_id"]
+    __properties: ClassVar[List[str]] = ["emails", "domain_name", "subscription", "new_subscription", "display_name", "user_password", "email_quota", "client_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,7 +95,7 @@ class WorkplaceCreateEmails(BaseModel):
             "new_subscription": obj.get("new_subscription"),
             "display_name": obj.get("display_name"),
             "user_password": obj.get("user_password"),
-            "email_quota_gb": obj.get("email_quota_gb"),
+            "email_quota": obj.get("email_quota"),
             "client_id": obj.get("client_id")
         })
         return _obj

@@ -30,7 +30,7 @@ class EmailDisplay(BaseModel):
     """ # noqa: E501
     id: Optional[StrictInt] = None
     name: Annotated[str, Field(min_length=1, strict=True, max_length=254)]
-    email_quota: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Email quota in GB")
+    email_quota_gb: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Email quota in GB", alias="email_quota")
     max_quota: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Max email quota in GB")
     used_quota: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = Field(default=None, description="Used quota in GB")
     email_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = None

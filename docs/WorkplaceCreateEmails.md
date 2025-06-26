@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **new_subscription** | **bool** |  | 
 **display_name** | **str** |  | 
 **user_password** | **str** |  | 
-**email_quota** | **int** |  | 
+**email_quota_gb** | **int** |  | 
 **client_id** | **int** |  | 
 
 ## Example

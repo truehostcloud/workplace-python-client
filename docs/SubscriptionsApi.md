@@ -4,19 +4,19 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**subscriptions_create**](SubscriptionsApi.md#subscriptions_create) | **POST** /subscriptions/ | Create a new email subscription
+[**emails_create**](SubscriptionsApi.md#emails_create) | **POST** /subscriptions/ | Create a new emails
 [**subscriptions_list**](SubscriptionsApi.md#subscriptions_list) | **GET** /subscriptions/ | List subscriptions
 [**subscriptions_read**](SubscriptionsApi.md#subscriptions_read) | **GET** /subscriptions/{context_id}/ | Get subscription details
 [**update_subscription_status**](SubscriptionsApi.md#update_subscription_status) | **POST** /subscriptions/{context_id}/ | Update subscription status
 
 
-# **subscriptions_create**
-> StandardResponse subscriptions_create(open_exchange_create_account)
+# **emails_create**
+> StandardResponse emails_create(workplace_create_emails)
 
-Create a new email subscription
+Create a new emails
 
-Create a new email subscription, it will create a new subscription
-for the domain if emails list is not empty
+Create a new emails, it will also create a new subscription
+for the domain if emails list is not empty and new_subscription is true
 
 ### Example
 
@@ -24,8 +24,8 @@ for the domain if emails list is not empty
 
 ```python
 import workplace_client
-from workplace_client.models.open_exchange_create_account import OpenExchangeCreateAccount
 from workplace_client.models.standard_response import StandardResponse
+from workplace_client.models.workplace_create_emails import WorkplaceCreateEmails
 from workplace_client.rest import ApiException
 from pprint import pprint
 
@@ -49,15 +49,15 @@ configuration = workplace_client.Configuration(
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.SubscriptionsApi(api_client)
-    open_exchange_create_account = workplace_client.OpenExchangeCreateAccount() # OpenExchangeCreateAccount | 
+    workplace_create_emails = workplace_client.WorkplaceCreateEmails() # WorkplaceCreateEmails | 
 
     try:
-        # Create a new email subscription
-        api_response = api_instance.subscriptions_create(open_exchange_create_account)
-        print("The response of SubscriptionsApi->subscriptions_create:\n")
+        # Create a new emails
+        api_response = api_instance.emails_create(workplace_create_emails)
+        print("The response of SubscriptionsApi->emails_create:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SubscriptionsApi->subscriptions_create: %s\n" % e)
+        print("Exception when calling SubscriptionsApi->emails_create: %s\n" % e)
 ```
 
 
@@ -67,7 +67,7 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **open_exchange_create_account** | [**OpenExchangeCreateAccount**](OpenExchangeCreateAccount.md)|  | 
+ **workplace_create_emails** | [**WorkplaceCreateEmails**](WorkplaceCreateEmails.md)|  | 
 
 ### Return type
 

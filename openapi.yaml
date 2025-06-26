@@ -531,7 +531,7 @@ components:
           minLength: 1
 
     # Account Creation Schemas
-    OpenExchangeCreateAccount:
+    WorkplaceCreateEmails:
       type: object
       required:
         - emails
@@ -541,6 +541,7 @@ components:
         - display_name
         - user_password
         - email_quota
+        - client_id
         
       properties:
         emails:
@@ -565,6 +566,9 @@ components:
           type: string
           minLength: 1
         email_quota:
+          type: integer
+          minimum: 0
+        client_id:
           type: integer
           minimum: 0
 
@@ -918,11 +922,11 @@ paths:
                 type: object
 
     post:
-      operationId: subscriptions_create
-      summary: Create a new email subscription
+      operationId: emails_create
+      summary: Create a new emails
       description: |-
-        Create a new email subscription, it will create a new subscription
-        for the domain if emails list is not empty
+        Create a new emails, it will also create a new subscription
+        for the domain if emails list is not empty and new_subscription is true
       tags:
         - subscriptions
       requestBody:
@@ -930,7 +934,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OpenExchangeCreateAccount'
+              $ref: '#/components/schemas/WorkplaceCreateEmails'
       responses:
         '200':
           description: Success

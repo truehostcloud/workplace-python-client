@@ -19,10 +19,10 @@ from typing_extensions import Annotated
 
 from pydantic import StrictStr
 from typing import Any, Dict
-from workplace_client.models.open_exchange_create_account import OpenExchangeCreateAccount
 from workplace_client.models.service_action import ServiceAction
 from workplace_client.models.standard_response import StandardResponse
 from workplace_client.models.subscriptions_read_response import SubscriptionsReadResponse
+from workplace_client.models.workplace_create_emails import WorkplaceCreateEmails
 
 from workplace_client.api_client import ApiClient, RequestSerialized
 from workplace_client.api_response import ApiResponse
@@ -43,9 +43,9 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def subscriptions_create(
+    def emails_create(
         self,
-        open_exchange_create_account: OpenExchangeCreateAccount,
+        workplace_create_emails: WorkplaceCreateEmails,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,12 +59,12 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> StandardResponse:
-        """Create a new email subscription
+        """Create a new emails
 
-        Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
+        Create a new emails, it will also create a new subscription for the domain if emails list is not empty and new_subscription is true
 
-        :param open_exchange_create_account: (required)
-        :type open_exchange_create_account: OpenExchangeCreateAccount
+        :param workplace_create_emails: (required)
+        :type workplace_create_emails: WorkplaceCreateEmails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,8 +87,8 @@ class SubscriptionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscriptions_create_serialize(
-            open_exchange_create_account=open_exchange_create_account,
+        _param = self._emails_create_serialize(
+            workplace_create_emails=workplace_create_emails,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -110,9 +110,9 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def subscriptions_create_with_http_info(
+    def emails_create_with_http_info(
         self,
-        open_exchange_create_account: OpenExchangeCreateAccount,
+        workplace_create_emails: WorkplaceCreateEmails,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -126,12 +126,12 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[StandardResponse]:
-        """Create a new email subscription
+        """Create a new emails
 
-        Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
+        Create a new emails, it will also create a new subscription for the domain if emails list is not empty and new_subscription is true
 
-        :param open_exchange_create_account: (required)
-        :type open_exchange_create_account: OpenExchangeCreateAccount
+        :param workplace_create_emails: (required)
+        :type workplace_create_emails: WorkplaceCreateEmails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -154,8 +154,8 @@ class SubscriptionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscriptions_create_serialize(
-            open_exchange_create_account=open_exchange_create_account,
+        _param = self._emails_create_serialize(
+            workplace_create_emails=workplace_create_emails,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -177,9 +177,9 @@ class SubscriptionsApi:
 
 
     @validate_call
-    def subscriptions_create_without_preload_content(
+    def emails_create_without_preload_content(
         self,
-        open_exchange_create_account: OpenExchangeCreateAccount,
+        workplace_create_emails: WorkplaceCreateEmails,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -193,12 +193,12 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a new email subscription
+        """Create a new emails
 
-        Create a new email subscription, it will create a new subscription for the domain if emails list is not empty
+        Create a new emails, it will also create a new subscription for the domain if emails list is not empty and new_subscription is true
 
-        :param open_exchange_create_account: (required)
-        :type open_exchange_create_account: OpenExchangeCreateAccount
+        :param workplace_create_emails: (required)
+        :type workplace_create_emails: WorkplaceCreateEmails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -221,8 +221,8 @@ class SubscriptionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscriptions_create_serialize(
-            open_exchange_create_account=open_exchange_create_account,
+        _param = self._emails_create_serialize(
+            workplace_create_emails=workplace_create_emails,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -239,9 +239,9 @@ class SubscriptionsApi:
         return response_data.response
 
 
-    def _subscriptions_create_serialize(
+    def _emails_create_serialize(
         self,
-        open_exchange_create_account,
+        workplace_create_emails,
         _request_auth,
         _content_type,
         _headers,
@@ -267,8 +267,8 @@ class SubscriptionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if open_exchange_create_account is not None:
-            _body_params = open_exchange_create_account
+        if workplace_create_emails is not None:
+            _body_params = workplace_create_emails
 
 
         # set the HTTP header `Accept`

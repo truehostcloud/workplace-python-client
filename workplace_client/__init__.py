@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.20"
+__version__ = "1.0.21"
 
 # import apis into sdk package
 from workplace_client.api.available_packages_api import AvailablePackagesApi
@@ -60,7 +60,7 @@ from workplace_client.models.email_alias import EmailAlias
 from workplace_client.models.email_display import EmailDisplay
 from workplace_client.models.found_dns_records import FoundDnsRecords
 from workplace_client.models.order_display import OrderDisplay
-from workplace_client.models.password_reset import PasswordReset
+from workplace_client.models.reset_email_password import ResetEmailPassword
 from workplace_client.models.service_action import ServiceAction
 from workplace_client.models.standard_response import StandardResponse
 from workplace_client.models.sub_scription_info import SubScriptionInfo

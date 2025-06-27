@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from workplace_client.models.password_reset import PasswordReset
+from workplace_client.models.reset_email_password import ResetEmailPassword
 from workplace_client.models.standard_response import StandardResponse
 
 from workplace_client.api_client import ApiClient, RequestSerialized
@@ -39,9 +39,9 @@ class ResetPasswordApi:
 
 
     @validate_call
-    def reset_password_create(
+    def reset_email_password(
         self,
-        password_reset: PasswordReset,
+        reset_email_password: ResetEmailPassword,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,8 +59,8 @@ class ResetPasswordApi:
 
         Reset subscription email password
 
-        :param password_reset: (required)
-        :type password_reset: PasswordReset
+        :param reset_email_password: (required)
+        :type reset_email_password: ResetEmailPassword
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -83,8 +83,8 @@ class ResetPasswordApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._reset_password_create_serialize(
-            password_reset=password_reset,
+        _param = self._reset_email_password_serialize(
+            reset_email_password=reset_email_password,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -106,9 +106,9 @@ class ResetPasswordApi:
 
 
     @validate_call
-    def reset_password_create_with_http_info(
+    def reset_email_password_with_http_info(
         self,
-        password_reset: PasswordReset,
+        reset_email_password: ResetEmailPassword,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -126,8 +126,8 @@ class ResetPasswordApi:
 
         Reset subscription email password
 
-        :param password_reset: (required)
-        :type password_reset: PasswordReset
+        :param reset_email_password: (required)
+        :type reset_email_password: ResetEmailPassword
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -150,8 +150,8 @@ class ResetPasswordApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._reset_password_create_serialize(
-            password_reset=password_reset,
+        _param = self._reset_email_password_serialize(
+            reset_email_password=reset_email_password,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -173,9 +173,9 @@ class ResetPasswordApi:
 
 
     @validate_call
-    def reset_password_create_without_preload_content(
+    def reset_email_password_without_preload_content(
         self,
-        password_reset: PasswordReset,
+        reset_email_password: ResetEmailPassword,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -193,8 +193,8 @@ class ResetPasswordApi:
 
         Reset subscription email password
 
-        :param password_reset: (required)
-        :type password_reset: PasswordReset
+        :param reset_email_password: (required)
+        :type reset_email_password: ResetEmailPassword
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -217,8 +217,8 @@ class ResetPasswordApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._reset_password_create_serialize(
-            password_reset=password_reset,
+        _param = self._reset_email_password_serialize(
+            reset_email_password=reset_email_password,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -235,9 +235,9 @@ class ResetPasswordApi:
         return response_data.response
 
 
-    def _reset_password_create_serialize(
+    def _reset_email_password_serialize(
         self,
-        password_reset,
+        reset_email_password,
         _request_auth,
         _content_type,
         _headers,
@@ -263,8 +263,8 @@ class ResetPasswordApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if password_reset is not None:
-            _body_params = password_reset
+        if reset_email_password is not None:
+            _body_params = reset_email_password
 
 
         # set the HTTP header `Accept`

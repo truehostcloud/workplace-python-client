@@ -27,8 +27,8 @@ docs/FoundDnsRecords.md
 docs/GetTokenApi.md
 docs/ImportApi.md
 docs/OrderDisplay.md
-docs/PasswordReset.md
 docs/RefreshTokenApi.md
+docs/ResetEmailPassword.md
 docs/ResetPasswordApi.md
 docs/ServiceAction.md
 docs/StandardResponse.md
@@ -87,7 +87,7 @@ workplace_client/models/email_alias.py
 workplace_client/models/email_display.py
 workplace_client/models/found_dns_records.py
 workplace_client/models/order_display.py
-workplace_client/models/password_reset.py
+workplace_client/models/reset_email_password.py
 workplace_client/models/service_action.py
 workplace_client/models/standard_response.py
 workplace_client/models/sub_scription_info.py

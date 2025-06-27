@@ -4,11 +4,11 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**reset_password_create**](ResetPasswordApi.md#reset_password_create) | **POST** /reset-password/ | Reset subscription email password
+[**reset_email_password**](ResetPasswordApi.md#reset_email_password) | **POST** /reset-password/ | Reset subscription email password
 
 
-# **reset_password_create**
-> StandardResponse reset_password_create(password_reset)
+# **reset_email_password**
+> StandardResponse reset_email_password(reset_email_password)
 
 Reset subscription email password
 
@@ -20,7 +20,7 @@ Reset subscription email password
 
 ```python
 import workplace_client
-from workplace_client.models.password_reset import PasswordReset
+from workplace_client.models.reset_email_password import ResetEmailPassword
 from workplace_client.models.standard_response import StandardResponse
 from workplace_client.rest import ApiException
 from pprint import pprint
@@ -45,15 +45,15 @@ configuration = workplace_client.Configuration(
 with workplace_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = workplace_client.ResetPasswordApi(api_client)
-    password_reset = workplace_client.PasswordReset() # PasswordReset | 
+    reset_email_password = workplace_client.ResetEmailPassword() # ResetEmailPassword | 
 
     try:
         # Reset subscription email password
-        api_response = api_instance.reset_password_create(password_reset)
-        print("The response of ResetPasswordApi->reset_password_create:\n")
+        api_response = api_instance.reset_email_password(reset_email_password)
+        print("The response of ResetPasswordApi->reset_email_password:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ResetPasswordApi->reset_password_create: %s\n" % e)
+        print("Exception when calling ResetPasswordApi->reset_email_password: %s\n" % e)
 ```
 
 
@@ -63,7 +63,7 @@ with workplace_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **password_reset** | [**PasswordReset**](PasswordReset.md)|  | 
+ **reset_email_password** | [**ResetEmailPassword**](ResetEmailPassword.md)|  | 
 
 ### Return type
 

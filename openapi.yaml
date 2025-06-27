@@ -516,7 +516,7 @@ components:
           readOnly: true
           minLength: 1
 
-    PasswordReset:
+    ResetEmailPassword:
       type: object
       required:
         - email
@@ -866,7 +866,7 @@ paths:
 
   /reset-password/:
     post:
-      operationId: reset-password_create
+      operationId: reset_email_password
       summary: Reset subscription email password
       description: Reset subscription email password
       tags:
@@ -876,7 +876,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PasswordReset'
+              $ref: '#/components/schemas/ResetEmailPassword'
       responses:
         '200':
           description: Success

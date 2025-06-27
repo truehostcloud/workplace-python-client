@@ -30,7 +30,7 @@ class WorkplaceCreateEmails(BaseModel):
     """ # noqa: E501
     emails: List[Annotated[str, Field(min_length=1, strict=True)]]
     domain_name: Annotated[str, Field(min_length=1, strict=True, max_length=255)]
-    subscription: Annotated[int, Field(strict=True, ge=0)]
+    plan_id: Annotated[int, Field(strict=True, ge=0)] = Field(alias="subscription")
     new_subscription: StrictBool
     display_name: Annotated[str, Field(min_length=1, strict=True)]
     user_password: Annotated[str, Field(min_length=1, strict=True)]

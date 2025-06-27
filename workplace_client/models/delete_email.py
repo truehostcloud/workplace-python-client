@@ -30,7 +30,7 @@ class DeleteEmail(BaseModel):
     """ # noqa: E501
     email: Annotated[str, Field(min_length=1, strict=True)]
     domain: Annotated[str, Field(min_length=1, strict=True)]
-    subscription: StrictInt
+    plan_id: StrictInt = Field(alias="subscription")
     __properties: ClassVar[List[str]] = ["email", "domain", "subscription"]
 
     model_config = ConfigDict(

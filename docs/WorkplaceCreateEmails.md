@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **emails** | **List[str]** |  | 
 **domain_name** | **str** |  | 
-**subscription** | **int** |  | 
+**plan_id** | **int** |  | 
 **new_subscription** | **bool** |  | 
 **display_name** | **str** |  | 
 **user_password** | **str** |  | 

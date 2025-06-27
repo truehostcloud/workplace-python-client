@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **is_dns_valid** | **bool** |  | [optional] 
 **client_id** | **int** |  | [optional] 
 **is_verified** | **bool** |  | [optional] 
-**subscription** | **int** |  | [optional] 
+**plan_id** | **int** |  | [optional] 
 
 ## Example
 

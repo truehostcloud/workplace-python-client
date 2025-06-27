@@ -64,3 +64,6 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+local_test.py
+.env
+

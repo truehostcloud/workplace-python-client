@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domain** | **str** |  | 
-**subscription** | **int** |  | 
+**plan_id** | **int** |  | 
 
 ## Example
 

@@ -29,7 +29,7 @@ class SubScriptionInfo(BaseModel):
     SubScriptionInfo
     """ # noqa: E501
     domain: Annotated[str, Field(min_length=1, strict=True)]
-    subscription: StrictInt
+    plan_id: StrictInt = Field(alias="subscription")
     __properties: ClassVar[List[str]] = ["domain", "subscription"]
 
     model_config = ConfigDict(

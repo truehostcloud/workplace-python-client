@@ -52,7 +52,7 @@ class OrderDisplay(BaseModel):
     is_dns_valid: Optional[StrictBool] = None
     client_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]] = None
     is_verified: Optional[StrictBool] = None
-    subscription: Optional[StrictInt] = None
+    plan_id: Optional[StrictInt] = Field(default=None, alias="subscription")
     __properties: ClassVar[List[str]] = ["id", "context_id", "domain", "enabled", "synched_at", "average_size", "filestore_id", "filestore_name", "max_quota", "context_name", "used_quota", "gab_mode", "is_order_active", "updated_at", "created_at", "unallocated_quota", "unallocated_alias", "is_alias_calculated", "is_alias_synched", "last_dns_check", "is_dns_valid", "client_id", "is_verified", "subscription"]
 
     model_config = ConfigDict(
@@ -135,9 +135,9 @@ class OrderDisplay(BaseModel):
         if self.client_id is None and "client_id" in self.model_fields_set:
             _dict['client_id'] = None
 
-        # set to None if subscription (nullable) is None
+        # set to None if plan_id (nullable) is None
         # and model_fields_set contains the field
-        if self.subscription is None and "subscription" in self.model_fields_set:
+        if self.plan_id is None and "plan_id" in self.model_fields_set:
             _dict['subscription'] = None
 
         return _dict

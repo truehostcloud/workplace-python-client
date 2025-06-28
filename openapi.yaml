@@ -289,7 +289,7 @@ components:
           type: integer
           nullable: true
 
-    ChangeEmailQuota:
+    UpdateEmailQuota:
       type: object
       required:
         - email
@@ -649,17 +649,17 @@ paths:
 
   /change-quota/:
     post:
-      operationId: change_email_quota
-      summary: Change email quota
-      description: Change email quota
+      operationId: update_email_quota
+      summary: Update email quota
+      description: Update email quota
       tags:
-        - change-quota
+        - update-email-quota
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChangeEmailQuota'
+              $ref: '#/components/schemas/UpdateEmailQuota'
       responses:
         '200':
           description: Success

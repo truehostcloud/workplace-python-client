@@ -16,7 +16,6 @@
 
 # import models into model package
 from workplace_client.models.alias_display import AliasDisplay
-from workplace_client.models.change_email_quota import ChangeEmailQuota
 from workplace_client.models.delete_alias import DeleteAlias
 from workplace_client.models.delete_email import DeleteEmail
 from workplace_client.models.dns_info_request import DnsInfoRequest
@@ -38,4 +37,5 @@ from workplace_client.models.subscription_usage_response import SubscriptionUsag
 from workplace_client.models.subscriptions_read_response import SubscriptionsReadResponse
 from workplace_client.models.token_obtain_pair import TokenObtainPair
 from workplace_client.models.token_refresh import TokenRefresh
+from workplace_client.models.update_email_quota import UpdateEmailQuota
 from workplace_client.models.workplace_create_emails import WorkplaceCreateEmails

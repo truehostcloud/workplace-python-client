@@ -15,11 +15,10 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.24"
+__version__ = "1.0.25"
 
 # import apis into sdk package
 from workplace_client.api.available_packages_api import AvailablePackagesApi
-from workplace_client.api.change_quota_api import ChangeQuotaApi
 from workplace_client.api.create_alias_api import CreateAliasApi
 from workplace_client.api.delete_alias_api import DeleteAliasApi
 from workplace_client.api.delete_email_api import DeleteEmailApi
@@ -33,6 +32,7 @@ from workplace_client.api.refresh_token_api import RefreshTokenApi
 from workplace_client.api.reset_password_api import ResetPasswordApi
 from workplace_client.api.subscription_info_api import SubscriptionInfoApi
 from workplace_client.api.subscriptions_api import SubscriptionsApi
+from workplace_client.api.update_email_quota_api import UpdateEmailQuotaApi
 from workplace_client.api.upgrade_api import UpgradeApi
 
 # import ApiClient
@@ -48,7 +48,6 @@ from workplace_client.exceptions import ApiException
 
 # import models into sdk package
 from workplace_client.models.alias_display import AliasDisplay
-from workplace_client.models.change_email_quota import ChangeEmailQuota
 from workplace_client.models.delete_alias import DeleteAlias
 from workplace_client.models.delete_email import DeleteEmail
 from workplace_client.models.dns_info_request import DnsInfoRequest
@@ -70,4 +69,5 @@ from workplace_client.models.subscription_usage_response import SubscriptionUsag
 from workplace_client.models.subscriptions_read_response import SubscriptionsReadResponse
 from workplace_client.models.token_obtain_pair import TokenObtainPair
 from workplace_client.models.token_refresh import TokenRefresh
+from workplace_client.models.update_email_quota import UpdateEmailQuota
 from workplace_client.models.workplace_create_emails import WorkplaceCreateEmails

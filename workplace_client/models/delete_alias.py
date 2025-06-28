@@ -31,7 +31,8 @@ class DeleteAlias(BaseModel):
     email: Annotated[str, Field(min_length=1, strict=True)]
     alias: Annotated[str, Field(min_length=1, strict=True)]
     domain: Annotated[str, Field(min_length=1, strict=True)]
-    __properties: ClassVar[List[str]] = ["email", "alias", "domain"]
+    client_id: Annotated[int, Field(strict=True, ge=0)]
+    __properties: ClassVar[List[str]] = ["email", "alias", "domain", "client_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,7 +87,8 @@ class DeleteAlias(BaseModel):
         _obj = cls.model_validate({
             "email": obj.get("email"),
             "alias": obj.get("alias"),
-            "domain": obj.get("domain")
+            "domain": obj.get("domain"),
+            "client_id": obj.get("client_id")
         })
         return _obj
 

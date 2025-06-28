@@ -31,7 +31,8 @@ class DeleteEmail(BaseModel):
     email: Annotated[str, Field(min_length=1, strict=True)]
     domain: Annotated[str, Field(min_length=1, strict=True)]
     plan_id: StrictInt = Field(alias="subscription")
-    __properties: ClassVar[List[str]] = ["email", "domain", "subscription"]
+    client_id: Annotated[int, Field(strict=True, ge=0)]
+    __properties: ClassVar[List[str]] = ["email", "domain", "subscription", "client_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,7 +87,8 @@ class DeleteEmail(BaseModel):
         _obj = cls.model_validate({
             "email": obj.get("email"),
             "domain": obj.get("domain"),
-            "subscription": obj.get("subscription")
+            "subscription": obj.get("subscription"),
+            "client_id": obj.get("client_id")
         })
         return _obj
 

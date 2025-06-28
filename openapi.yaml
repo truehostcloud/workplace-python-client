@@ -294,6 +294,7 @@ components:
       required:
         - email
         - quota
+        - client_id
       properties:
         email:
           type: string
@@ -301,6 +302,9 @@ components:
           minLength: 1
         quota:
           type: integer
+        client_id:
+          type: integer
+          minimum: 0
 
     DeleteEmail:
       type: object
@@ -308,6 +312,7 @@ components:
         - email
         - domain
         - subscription
+        - client_id
       properties:
         email:
           type: string
@@ -318,6 +323,9 @@ components:
           minLength: 1
         subscription:
           type: integer
+        client_id:
+          type: integer
+          minimum: 0
 
     # Alias Related Schemas
     EmailAlias:
@@ -326,6 +334,7 @@ components:
         - email
         - domain
         - alias
+        - client_id
       properties:
         email:
           type: string
@@ -338,6 +347,9 @@ components:
           type: string
           format: email
           minLength: 1
+        client_id:
+          type: integer
+          minimum: 0
 
     DeleteAlias:
       type: object
@@ -345,6 +357,7 @@ components:
         - email
         - alias
         - domain
+        - client_id
       properties:
         email:
           type: string
@@ -357,6 +370,9 @@ components:
         domain:
           type: string
           minLength: 1
+        client_id:
+          type: integer
+          minimum: 0
 
     AliasDisplay:
       type: object

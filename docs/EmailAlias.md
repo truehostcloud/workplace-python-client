@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **email** | **str** |  | 
 **domain** | **str** |  | 
 **alias** | **str** |  | 
+**client_id** | **int** |  | 
 
 ## Example
 

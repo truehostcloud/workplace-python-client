@@ -4,11 +4,11 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_alias_create**](CreateAliasApi.md#create_alias_create) | **POST** /create-alias/ | Create email alias
+[**create_email_alias**](CreateAliasApi.md#create_email_alias) | **POST** /create-alias/ | Create email alias
 
 
-# **create_alias_create**
-> StandardResponse create_alias_create(email_alias)
+# **create_email_alias**
+> StandardResponse create_email_alias(email_alias)
 
 Create email alias
 
@@ -49,11 +49,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 
     try:
         # Create email alias
-        api_response = api_instance.create_alias_create(email_alias)
-        print("The response of CreateAliasApi->create_alias_create:\n")
+        api_response = api_instance.create_email_alias(email_alias)
+        print("The response of CreateAliasApi->create_email_alias:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CreateAliasApi->create_alias_create: %s\n" % e)
+        print("Exception when calling CreateAliasApi->create_email_alias: %s\n" % e)
 ```
 
 

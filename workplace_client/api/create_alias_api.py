@@ -39,7 +39,7 @@ class CreateAliasApi:
 
 
     @validate_call
-    def create_alias_create(
+    def create_email_alias(
         self,
         email_alias: EmailAlias,
         _request_timeout: Union[
@@ -83,7 +83,7 @@ class CreateAliasApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_alias_create_serialize(
+        _param = self._create_email_alias_serialize(
             email_alias=email_alias,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -106,7 +106,7 @@ class CreateAliasApi:
 
 
     @validate_call
-    def create_alias_create_with_http_info(
+    def create_email_alias_with_http_info(
         self,
         email_alias: EmailAlias,
         _request_timeout: Union[
@@ -150,7 +150,7 @@ class CreateAliasApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_alias_create_serialize(
+        _param = self._create_email_alias_serialize(
             email_alias=email_alias,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -173,7 +173,7 @@ class CreateAliasApi:
 
 
     @validate_call
-    def create_alias_create_without_preload_content(
+    def create_email_alias_without_preload_content(
         self,
         email_alias: EmailAlias,
         _request_timeout: Union[
@@ -217,7 +217,7 @@ class CreateAliasApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_alias_create_serialize(
+        _param = self._create_email_alias_serialize(
             email_alias=email_alias,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -235,7 +235,7 @@ class CreateAliasApi:
         return response_data.response
 
 
-    def _create_alias_create_serialize(
+    def _create_email_alias_serialize(
         self,
         email_alias,
         _request_auth,

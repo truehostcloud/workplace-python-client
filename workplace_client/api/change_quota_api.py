@@ -39,7 +39,7 @@ class ChangeQuotaApi:
 
 
     @validate_call
-    def change_quota_create(
+    def change_email_quota(
         self,
         change_email_quota: ChangeEmailQuota,
         _request_timeout: Union[
@@ -83,7 +83,7 @@ class ChangeQuotaApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._change_quota_create_serialize(
+        _param = self._change_email_quota_serialize(
             change_email_quota=change_email_quota,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -106,7 +106,7 @@ class ChangeQuotaApi:
 
 
     @validate_call
-    def change_quota_create_with_http_info(
+    def change_email_quota_with_http_info(
         self,
         change_email_quota: ChangeEmailQuota,
         _request_timeout: Union[
@@ -150,7 +150,7 @@ class ChangeQuotaApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._change_quota_create_serialize(
+        _param = self._change_email_quota_serialize(
             change_email_quota=change_email_quota,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -173,7 +173,7 @@ class ChangeQuotaApi:
 
 
     @validate_call
-    def change_quota_create_without_preload_content(
+    def change_email_quota_without_preload_content(
         self,
         change_email_quota: ChangeEmailQuota,
         _request_timeout: Union[
@@ -217,7 +217,7 @@ class ChangeQuotaApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._change_quota_create_serialize(
+        _param = self._change_email_quota_serialize(
             change_email_quota=change_email_quota,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -235,7 +235,7 @@ class ChangeQuotaApi:
         return response_data.response
 
 
-    def _change_quota_create_serialize(
+    def _change_email_quota_serialize(
         self,
         change_email_quota,
         _request_auth,

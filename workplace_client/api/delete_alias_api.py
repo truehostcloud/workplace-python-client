@@ -39,7 +39,7 @@ class DeleteAliasApi:
 
 
     @validate_call
-    def delete_alias_create(
+    def delete_email_alias(
         self,
         delete_alias: DeleteAlias,
         _request_timeout: Union[
@@ -83,7 +83,7 @@ class DeleteAliasApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_alias_create_serialize(
+        _param = self._delete_email_alias_serialize(
             delete_alias=delete_alias,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -106,7 +106,7 @@ class DeleteAliasApi:
 
 
     @validate_call
-    def delete_alias_create_with_http_info(
+    def delete_email_alias_with_http_info(
         self,
         delete_alias: DeleteAlias,
         _request_timeout: Union[
@@ -150,7 +150,7 @@ class DeleteAliasApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_alias_create_serialize(
+        _param = self._delete_email_alias_serialize(
             delete_alias=delete_alias,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -173,7 +173,7 @@ class DeleteAliasApi:
 
 
     @validate_call
-    def delete_alias_create_without_preload_content(
+    def delete_email_alias_without_preload_content(
         self,
         delete_alias: DeleteAlias,
         _request_timeout: Union[
@@ -217,7 +217,7 @@ class DeleteAliasApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_alias_create_serialize(
+        _param = self._delete_email_alias_serialize(
             delete_alias=delete_alias,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -235,7 +235,7 @@ class DeleteAliasApi:
         return response_data.response
 
 
-    def _delete_alias_create_serialize(
+    def _delete_email_alias_serialize(
         self,
         delete_alias,
         _request_auth,

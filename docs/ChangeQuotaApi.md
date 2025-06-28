@@ -4,11 +4,11 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**change_quota_create**](ChangeQuotaApi.md#change_quota_create) | **POST** /change-quota/ | Change email quota
+[**change_email_quota**](ChangeQuotaApi.md#change_email_quota) | **POST** /change-quota/ | Change email quota
 
 
-# **change_quota_create**
-> StandardResponse change_quota_create(change_email_quota)
+# **change_email_quota**
+> StandardResponse change_email_quota(change_email_quota)
 
 Change email quota
 
@@ -49,11 +49,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 
     try:
         # Change email quota
-        api_response = api_instance.change_quota_create(change_email_quota)
-        print("The response of ChangeQuotaApi->change_quota_create:\n")
+        api_response = api_instance.change_email_quota(change_email_quota)
+        print("The response of ChangeQuotaApi->change_email_quota:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ChangeQuotaApi->change_quota_create: %s\n" % e)
+        print("Exception when calling ChangeQuotaApi->change_email_quota: %s\n" % e)
 ```
 
 

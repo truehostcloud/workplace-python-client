@@ -4,11 +4,11 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_email_create**](DeleteEmailApi.md#delete_email_create) | **POST** /delete-email/ | Delete email
+[**delete_email**](DeleteEmailApi.md#delete_email) | **POST** /delete-email/ | Delete email
 
 
-# **delete_email_create**
-> StandardResponse delete_email_create(delete_email)
+# **delete_email**
+> StandardResponse delete_email(delete_email)
 
 Delete email
 
@@ -49,11 +49,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete email
-        api_response = api_instance.delete_email_create(delete_email)
-        print("The response of DeleteEmailApi->delete_email_create:\n")
+        api_response = api_instance.delete_email(delete_email)
+        print("The response of DeleteEmailApi->delete_email:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DeleteEmailApi->delete_email_create: %s\n" % e)
+        print("Exception when calling DeleteEmailApi->delete_email: %s\n" % e)
 ```
 
 

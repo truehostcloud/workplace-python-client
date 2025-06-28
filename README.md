@@ -94,10 +94,10 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AvailablePackagesApi* | [**available_packages_list**](docs/AvailablePackagesApi.md#available_packages_list) | **GET** /available-packages/ | Get available subscriptions
-*ChangeQuotaApi* | [**change_quota_create**](docs/ChangeQuotaApi.md#change_quota_create) | **POST** /change-quota/ | Change email quota
-*CreateAliasApi* | [**create_alias_create**](docs/CreateAliasApi.md#create_alias_create) | **POST** /create-alias/ | Create email alias
-*DeleteAliasApi* | [**delete_alias_create**](docs/DeleteAliasApi.md#delete_alias_create) | **POST** /delete-alias/ | Delete alias
-*DeleteEmailApi* | [**delete_email_create**](docs/DeleteEmailApi.md#delete_email_create) | **POST** /delete-email/ | Delete email
+*ChangeQuotaApi* | [**change_email_quota**](docs/ChangeQuotaApi.md#change_email_quota) | **POST** /change-quota/ | Change email quota
+*CreateAliasApi* | [**create_email_alias**](docs/CreateAliasApi.md#create_email_alias) | **POST** /create-alias/ | Create email alias
+*DeleteAliasApi* | [**delete_email_alias**](docs/DeleteAliasApi.md#delete_email_alias) | **POST** /delete-alias/ | Delete alias
+*DeleteEmailApi* | [**delete_email**](docs/DeleteEmailApi.md#delete_email) | **POST** /delete-email/ | Delete email
 *DnsInfoApi* | [**dns_info_create**](docs/DnsInfoApi.md#dns_info_create) | **POST** /dns-info/ | Get DNS information
 *DomainApi* | [**domain_create**](docs/DomainApi.md#domain_create) | **POST** /domain/ | Update domain subscription status
 *DomainAliasApi* | [**domain_alias_create**](docs/DomainAliasApi.md#domain_alias_create) | **POST** /domain-alias/ | Get domain alias list

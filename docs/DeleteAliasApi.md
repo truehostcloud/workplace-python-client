@@ -4,11 +4,11 @@ All URIs are relative to *https://workplace-console.truehost.cloud/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_alias_create**](DeleteAliasApi.md#delete_alias_create) | **POST** /delete-alias/ | Delete alias
+[**delete_email_alias**](DeleteAliasApi.md#delete_email_alias) | **POST** /delete-alias/ | Delete alias
 
 
-# **delete_alias_create**
-> StandardResponse delete_alias_create(delete_alias)
+# **delete_email_alias**
+> StandardResponse delete_email_alias(delete_alias)
 
 Delete alias
 
@@ -49,11 +49,11 @@ with workplace_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete alias
-        api_response = api_instance.delete_alias_create(delete_alias)
-        print("The response of DeleteAliasApi->delete_alias_create:\n")
+        api_response = api_instance.delete_email_alias(delete_alias)
+        print("The response of DeleteAliasApi->delete_email_alias:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DeleteAliasApi->delete_alias_create: %s\n" % e)
+        print("Exception when calling DeleteAliasApi->delete_email_alias: %s\n" % e)
 ```
 
 

@@ -39,7 +39,7 @@ class DeleteEmailApi:
 
 
     @validate_call
-    def delete_email_create(
+    def delete_email(
         self,
         delete_email: DeleteEmail,
         _request_timeout: Union[
@@ -83,7 +83,7 @@ class DeleteEmailApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_email_create_serialize(
+        _param = self._delete_email_serialize(
             delete_email=delete_email,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -106,7 +106,7 @@ class DeleteEmailApi:
 
 
     @validate_call
-    def delete_email_create_with_http_info(
+    def delete_email_with_http_info(
         self,
         delete_email: DeleteEmail,
         _request_timeout: Union[
@@ -150,7 +150,7 @@ class DeleteEmailApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_email_create_serialize(
+        _param = self._delete_email_serialize(
             delete_email=delete_email,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -173,7 +173,7 @@ class DeleteEmailApi:
 
 
     @validate_call
-    def delete_email_create_without_preload_content(
+    def delete_email_without_preload_content(
         self,
         delete_email: DeleteEmail,
         _request_timeout: Union[
@@ -217,7 +217,7 @@ class DeleteEmailApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_email_create_serialize(
+        _param = self._delete_email_serialize(
             delete_email=delete_email,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -235,7 +235,7 @@ class DeleteEmailApi:
         return response_data.response
 
 
-    def _delete_email_create_serialize(
+    def _delete_email_serialize(
         self,
         delete_email,
         _request_auth,

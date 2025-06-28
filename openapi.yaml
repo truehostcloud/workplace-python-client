@@ -649,7 +649,7 @@ paths:
 
   /change-quota/:
     post:
-      operationId: change-quota_create
+      operationId: change_email_quota
       summary: Change email quota
       description: Change email quota
       tags:
@@ -670,7 +670,7 @@ paths:
 
   /create-alias/:
     post:
-      operationId: create-alias_create
+      operationId: create_email_alias
       summary: Create email alias
       description: Create email alias
       tags:
@@ -691,7 +691,7 @@ paths:
 
   /delete-alias/:
     post:
-      operationId: delete-alias_create
+      operationId: delete_email_alias
       summary: Delete alias
       description: Delete alias
       tags:
@@ -712,7 +712,7 @@ paths:
 
   /delete-email/:
     post:
-      operationId: delete-email_create
+      operationId: delete_email
       summary: Delete email
       description: Delete email
       tags:

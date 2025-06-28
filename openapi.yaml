@@ -521,6 +521,7 @@ components:
       required:
         - email
         - password
+        - client_id
       properties:
         email:
           type: string
@@ -529,6 +530,9 @@ components:
         password:
           type: string
           minLength: 1
+        client_id:
+          type: integer
+          minimum: 0
 
     # Account Creation Schemas
     WorkplaceCreateEmails:

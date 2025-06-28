@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** |  | 
 **password** | **str** |  | 
+**client_id** | **int** |  | 
 
 ## Example
 

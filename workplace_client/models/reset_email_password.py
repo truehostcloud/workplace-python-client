@@ -30,7 +30,8 @@ class ResetEmailPassword(BaseModel):
     """ # noqa: E501
     email: Annotated[str, Field(min_length=1, strict=True)]
     password: Annotated[str, Field(min_length=1, strict=True)]
-    __properties: ClassVar[List[str]] = ["email", "password"]
+    client_id: Annotated[int, Field(strict=True, ge=0)]
+    __properties: ClassVar[List[str]] = ["email", "password", "client_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,7 +85,8 @@ class ResetEmailPassword(BaseModel):
 
         _obj = cls.model_validate({
             "email": obj.get("email"),
-            "password": obj.get("password")
+            "password": obj.get("password"),
+            "client_id": obj.get("client_id")
         })
         return _obj
 

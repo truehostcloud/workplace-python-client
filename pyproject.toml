@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "workplace_client"
-version = "1.0.23"
+version = "1.0.24"
 description = "Workplace Console API"
 authors = ["OpenAPI Generator Community <support@truehost.cloud>"]
 license = "NoLicense"

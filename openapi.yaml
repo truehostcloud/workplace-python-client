@@ -311,7 +311,6 @@ components:
       required:
         - email
         - domain
-        - subscription
         - client_id
       properties:
         email:
@@ -321,8 +320,6 @@ components:
         domain:
           type: string
           minLength: 1
-        subscription:
-          type: integer
         client_id:
           type: integer
           minimum: 0

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -30,9 +30,8 @@ class DeleteEmail(BaseModel):
     """ # noqa: E501
     email: Annotated[str, Field(min_length=1, strict=True)]
     domain: Annotated[str, Field(min_length=1, strict=True)]
-    plan_id: StrictInt = Field(alias="subscription")
     client_id: Annotated[int, Field(strict=True, ge=0)]
-    __properties: ClassVar[List[str]] = ["email", "domain", "subscription", "client_id"]
+    __properties: ClassVar[List[str]] = ["email", "domain", "client_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,7 +86,6 @@ class DeleteEmail(BaseModel):
         _obj = cls.model_validate({
             "email": obj.get("email"),
             "domain": obj.get("domain"),
-            "subscription": obj.get("subscription"),
             "client_id": obj.get("client_id")
         })
         return _obj
